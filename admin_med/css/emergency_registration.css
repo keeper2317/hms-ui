@@ -1,0 +1,102 @@
+.unidentifiedCB {
+    position: absolute;
+    margin-left: -20px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.unidentified-label {
+    position: relative;
+    padding-left: 35px; /* Adjust this to give space for the checkbox */
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+.unidentified-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border: 2px solid #555; /* Border for the checkbox */
+    border-radius: 4px; /* Rounded edges */
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.unidentifiedCB:checked + .unidentified-label::before {
+    background-color: #4caf50; /* Green when checked */
+    border-color: #4caf50;
+}
+
+.unidentified-label::after {
+    content: "";
+    position: absolute;
+    left: 9px; /* Position of the checkmark */
+    top: 5px;
+    width: 8px;
+    height: 13px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg); /* Creates the checkmark */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s;
+}
+.unidentifiedCB:checked + .unidentified-label::after {
+    opacity: 1;
+}
+
+
+.generate-btn{
+    background-color: #012d74; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 45px;
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -60px;
+    
+}
+
+.selection-message{
+    
+    margin-left: -130px;
+}
+
+.generate-btn:hover {
+    background-color: black; /* Darken the background on hover */
+}
+
+.form-subtitle {
+    margin-bottom: 20px;
+    color: #666;
+    text-align: center;
+}
+.reg-date-time {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.reg-date{
+    margin-left: -1px;
+}
+
+.reg-time{
+    margin-left: 20px;
+    width: 120px;
+}
+.time-label {
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 190px;
+}

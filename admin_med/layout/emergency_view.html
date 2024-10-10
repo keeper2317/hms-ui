@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+<html lang="en" class="supernova">
+
+<head>
+   
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2.0, user-scalable=1">
+<meta name="HandheldFriendly" content="true" />
+<title>Syncore Medical Center</title>
+
+<!-- Custom sidebar -->
+
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="/images/syncore_logo.png">
+<link href="admin_medcss/theme/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/chartist/css/chartist.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+<!-- Form step -->
+<link href="admin_medcss/theme/vendor/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+<!-- Datatable -->
+<link href="admin_medcss/theme/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<!-- Calendar -->
+<link href="admin_medcss/theme/vendor/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+
+
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<!-- Page plugins css -->
+<link href="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<link id="custom-font" type="text/css" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Lato" />
+<!-- <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/defaultV2.css?v=de56e2d" /> -->
+
+<link href="admin_medcss/reg_form/css/defaultV2.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-common.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-design.css" rel="stylesheet" />
+
+<!-- custom stylesheet -->
+
+<!-- Vanilla Datepicker -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/css/datepicker.min.css">
+
+<link rel="stylesheet" href="/css/emergency_registration.css">
+
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <div class="dim-overlay"></div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="/admin_med/layout/emergency_records.html" class="brand-logo">
+                <img class="logo-abbr" sizes="200x200" src="/images/syncore_logo.png" alt="">
+                <img class="logo-compact" src="/images/syncore-text.png" alt="">
+                <img class="brand-title" src="/images/syncore-text.png" alt="">
+            </a>
+        
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left"></div>
+        
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="list-unstyled">
+                                        <li class="media dropdown-item">
+                                            <span class="success"><i class="ti-user"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
+                                                        Successfully
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="danger"><i class="ti-bookmark"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="primary"><i class="ti-heart"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                        <li class="media dropdown-item">
+                                            <span class="success"><i class="ti-image"></i></span>
+                                            <div class="media-body">
+                                                <a href="#">
+                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
+                                                        Successfully
+                                                    </p>
+                                                </a>
+                                            </div>
+                                            <span class="notify-time">3:20 am</span>
+                                        </li>
+                                    </ul>
+                                    <a class="all-notification" href="#">See all notifications <i
+                                            class="ti-arrow-right"></i></a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <form action="/logout" method="POST">
+                                        <a class="dropdown-item block py-2 pr-5 pl-4">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Dashboard</li>
+                    <li>
+                        <a href="{{ url('') }}" aria-expanded="false">
+                            <i class="mdi mdi-home mdi-24px"></i>
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="calendar" aria-expanded="false">
+                            <i class="mdi mdi-calendar mdi-24px"></i>
+                            <span class="nav-text">Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-label">Patient</li>
+                    <li>
+                        <a href="overall_records" aria-expanded="false">
+                            <i class="icon icon-single-04"></i>
+                            <span class="nav-text">Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="records" aria-expanded="false">
+                            <i class="mdi mdi-folder-outline mdi-24px"></i>
+                            <span class="nav-text">Records</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
+                            <li><a href="inpatient_records" aria-expanded="false">In-Patients</a>
+                            </li>
+                            <li><a href="javascript:void()">Out-Patients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Transactions</li>
+                    <li>
+                        <a href="javascript:void()" aria-expanded="false">
+                            <i class="mdi mdi-monitor mdi-24px"></i>
+                            <span class="nav-text">Transactions</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="">Patient Details</h4>
+                            </div>
+                            <div class="card-body">
+    
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#"><img class="media-object mr-3"
+                                                src="/images/4.png"
+                                                alt="..."></a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading text-primary">John L. Doe Sr.</h4>
+                                        <p>&#8203</p>
+                                    </div>
+                                </div>
+    
+                                <ul class="nav nav-tabs">
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#patientInfo1">Patient Information</a>
+                                    </li>
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#vitalSigns">Vital Signs</a>
+                                    </li>
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#diagnosisAndProcedure">Diagnosis and Procedure</a>
+                                    </li>
+    
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#doctorsOrder">Doctor's Order</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#nursesNotes">Nurse's Notes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#intakeAndOutput">Intake & Output</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#medicationLog">Medication Log</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#ivFluid">IV Fluid</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#charges">Charges</a>
+                                    </li>
+    
+    
+    
+                                </ul>
+    
+                                <div class="tab-content">
+    
+                                    <!-- Patient Info Tab -->
+                                    <div class="tab-pane fade show active" id="patientInfo1" role="tabpanel">
+                                        <div class="pt-4">
+                                            <h4 class="card-title mb-4">General Information</h4>
+    
+    <div class="row">
+        <div class="col-xl-4">
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Date of Birth:</dt>
+                    <dd class="mb-4">01/01/1990</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Nationality:</dt>
+                    <dd class="mb-4">Filipino</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Religion:</dt>
+                    <dd class="mb-4">Christianity</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Sex:</dt>
+                    <dd class="mb-4">Male</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Full Address:</dt>
+                    <dd>N/A</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Phone Number:</dt>
+                    <dd>N/A</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Civil Status:</dt>
+                    <dd class="mb-4">N/A</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Employment:</dt>
+                    <dd>Employed</dd>
+                </dl>
+            </div>
+            <div class="col-lg-12">
+                <dl>
+                    <dt class="mb-2">Email:</dt>
+                    <dd>sample@example.com</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <hr>
+    </div>
+    
+    <div class="update-button">
+        <button type="button" class="btn btn-square btn-outline-primary btn-lg" aria-label="Update"
+            onclick="window.location.href='/admin_med/layout/emergency_edit.html'">Update
+        </button>
+    </div>
+                                        </div>
+                                    </div>
+                                     <!-- End of Patient Info Tab -->
+    
+                                    <!-- Vital Signs Tab -->
+                                    <div class="tab-pane fade" id="vitalSigns">
+                                        <link rel="stylesheet" href="/css/vitalsigns.css">
+    <script src="/js/patient_charts.js"></script>
+    
+    
+    
+    <div>
+        <div>
+    
+            <div class="row justify-content-center my-4">
+                <div class="col-lg-12">
+                    <div class="row align-items-center ">
+    
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row grid">
+                <div class="col-xl-4 col-xxl-12">
+                    <div class="card">
+    
+                        <!-- Card body for vital signs input-->
+                        <div class="card-body">
+    
+    
+                            <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                <label class="normal-ranges-label" id="normalRanges" for="tooltip">
+                                    <strong>Normal Ranges</strong>
+                                </label>
+                                <div class="tooltip" id="tooltip" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; padding: 10px; z-index: 1;">
+                                    <ul>
+                                        <li>BP: Normal BP: 90/60 to 120/80 mmHg</li>
+                                        <li>HR: Normal HR: 60 to 100 bpm</li>
+                                        <li>PR: Normal PR: 60 to 100 bpm</li>
+                                        <li>Temp: Normal Temp: 36.1 to 37.2 °C</li>
+                                        <li>O2: Normal O2Sat: 95% to 100%</li>
+                                        <li>Pain Scale: Pain Scale: 0 (no pain) to 10 (worst pain)</li>
+                                        <li>Resp Rate: Normal Resp Rate: 12 to 20 breaths/min</li>
+                                        <li>BMI: Normal BMI: 18.5 to 24.9</li>
+                                    </ul>
+                                </div>
+                            </div>
+    
+    
+                            <form action="/emergency/vital-signs/store" class="step-form-horizontal" method="POST" onsubmit="">
+                            <!-- Id and Date Section -->
+                            <div class="id-and-date">
+    
+                                <!-- Id and Date Section Text -->
+                                <div class="row id-and-date-text">
+    
+                                    <div class="col-md-6">
+                                        <h5 class="id-and-date-label">Date</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 class="id-and-date-label">Time</h5>
+                                    </div>
+                                </div>
+                                <!-- End of Id and Date Section Text -->
+    
+                                <!-- Id and Date Section Input -->
+                                <div class="row id-and-date-input">
+    
+                                    <div class="col-md-6">
+                                        <input type="date" name="diagnosis_date" id="datetime-input" class="form-control date-input">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="time" name="diagnosis_time" id="datetime-input-time" class="form-control date-input">
+                                    </div>
+                                </div>
+                                <!-- End of Id and Date Section Input -->
+    
+                            </div>
+    
+                            <!-- BP HR and PR -->
+                            <div class="bp-hr-pr">
+    
+                                <!-- BP HR and PR Section Text -->
+                                <div class="row bp-hr-pr-text">
+                                    <div class="col-md-4">
+                                        <h5 class="bp-text">BP</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="hr-text">HR</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="pr-text">PR</h5>
+                                    </div>
+                                </div>
+                                <!-- End of BP HR and PR Section Text -->
+    
+                                <!-- BP HR and PR Section Input -->
+                                <div class="row vital-signs-input">
+                                    <div class="col-md-4">
+                                        <input type="text" name="B_P" id="bpInput" class="form-control bp-input" data-toggle="tooltip" placeholder="Blood Pressure (e.g. 120/80)">
+                                        <small id="bpMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="heart_rate" id="hrInput" class="form-control hr-input" data-toggle="tooltip" placeholder="Heart Rate (bpm)">
+                                        <small id="hrMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="pulse_rate" id="prInput" class="form-control pr-input" data-toggle="tooltip" placeholder="Pulse Rate (bpm)">
+                                        <small id="prMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                </div>
+                                <!-- End of BP HR and PR Section Input -->
+    
+                            </div>
+                            <!-- End of BP HR and PR -->
+    
+                            <!-- Temp, O2Sat, Pain Scale -->
+                            <div class="bp-hr-pr">
+                                <!-- Temp, O2Sat, Pain Scale Section Text -->
+                                <div class="row temp-o2,ps-text">
+                                    <div class="col-md-4">
+                                        <h5 class="temp-text">Temp</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="o2-text">O2Sat</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="pain-scale-text">Pain Scale</h5>
+                                    </div>
+                                </div>
+                                <!-- End of Temp, O2Sat, Pain Scale Section Text -->
+    
+                                <!-- Temp, O2Sat, Pain Scale Section Input -->
+                                <div class="row temp-o2,ps-input">
+                                    <div class="col-md-4">
+                                        <input type="text" name="temperature" id="tempInput" class="form-control temp-input" data-toggle="tooltip" placeholder="">
+                                        <small id="tempMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="oxygen_saturation" id="o2Input" class="form-control o2-input" data-toggle="tooltip" placeholder="">
+                                        <small id="o2Message" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="pain_scale" id="painScaleInput" class="form-control pain-scale-input" data-toggle="tooltip" placeholder="">
+                                        <small id="painScaleMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                </div>
+                                <!-- End of Temp, O2Sat, Pain Scale Section Input -->
+    
+                            </div>
+                            <!-- End of Temp, O2Sat, Pain Scale -->
+    
+                            <!-- Resp Rate, Resp Pattern -->
+                            <div class="resprate-resppatt">
+                                <!-- Resp Rate, Resp Pattern Text -->
+                                <div class="row resprate-resp-pattern-text">
+                                    <div class="col-md-4">
+                                        <h5 class="resp-rate-text">Resp Rate</h5>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h5 class="resp-pattern-text">Resp Pattern</h5>
+                                    </div>
+                                </div>
+                                <!-- End of Resp Rate, Resp Pattern Text -->
+                                <!-- Resp Rate, Resp Pattern Input -->
+                                <div class="row resprate-resp-pattern-input">
+                                    <div class="col-md-4">
+                                        <input type="text" name="respiratory_rate" id="respRateInput" class="form-control resp-rate-input" data-toggle="tooltip" placeholder="">
+                                        <small id="respRateMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input list="resp-patterns" name="respiratory_pattern" id="respPatternInput" class="form-control resp-pattern-input" data-toggle="tooltip" placeholder="">
+                                        <datalist id="resp-patterns">
+                                            <option value="Normal">
+                                            <option value="Tachypnea">
+                                            <option value="Bradypnea">
+                                            <option value="Apnea">
+                                            <option value="Hyperventilation">
+                                        </datalist>
+    
+                                    </div>
+                                </div>
+                                <!-- End of Resp Rate, Resp Pattern Input -->
+                            </div>
+                            <!-- End of Resp Rate, Resp Pattern -->
+    
+                            <!-- weight, height,bmi -->
+                            <div class="bp-hr-pr">
+                                <!-- weight, height,bmi Text -->
+                                <div class="row weight-height-bmi-text">
+                                    <div class="col-md-4">
+                                        <h5 class="weight-text">Weight</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="height-text">Height</h5>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5 class="bmi-text">BMI</h5>
+                                    </div>
+                                </div>
+                                <!-- End of weight, height,bmi Text -->
+                                <!-- weight, height,bmi Input -->
+                                <div class="row weight-height-bmi-input">
+                                    <div class="col-md-4">
+                                        <input type="text" name="weight" id="weightInput" class="form-control weight-input" data-toggle="tooltip" placeholder="">
+                                        <small id="weightMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="height" id="heightInput" class="form-control height-input" data-toggle="tooltip" placeholder="height (cm)">
+                                        <small id="heightMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" name="bmi" id="bmiInput" class="form-control bmi-input" data-toggle="tooltip" placeholder="">
+                                        <small id="bmiMessage" class="text-danger" style="display: none;"></small>
+                                    </div>
+                                </div>
+                                <!-- End of weight, height,bmi Input -->
+                            </div>
+                            <!-- End of weight, height,bmi -->
+    
+                            <!-- Remarks Pattern -->
+                            <div class="vital-signs-remarks">
+                                <!-- Remarks Text -->
+                                <div class="col-md-4">
+                                    <h5 class="remarks-text">Remarks</h5>
+                                </div>
+                                <!-- End of Remarks Text -->
+                                <!-- Remarks Input -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea name="vitals_note" id="remarksInput" class="remarks-input" data-toggle="tooltip" placeholder="" rows="4"></textarea>
+                                    </div>
+                                </div>
+                                <!-- End of Remarks Input -->
+                            </div>
+                            <!--End of Remarks Pattern -->
+                            <!-- <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}"> -->
+    
+                            <!-- Footer Buttons -->
+                            <div class="card-footer d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary ms-3">Save</button>
+                            </div>
+                        </div>
+                        </form>
+                        <!-- End of card body for vital signs input-->
+    
+    
+                    </div>
+                </div>
+    
+                <!-- Table in the left side -->
+                <div class="col-xl-8 col-xxl-12">
+                    <div class="card">
+    
+                        <div class="card-header">
+                            <h4 class="card-title">Patient's Vital Signs</h4>
+                        </div>
+    
+                        <div class="card-body">
+                            <div class="basic-form">
+    
+                                <table class="table-left" id="vitalSignsTable" data-sort-dir="asc">
+                                    <thead class="vital-signs-table-header">
+                                        <tr class="vital-signs-header">
+                                            <!-- Clickable headers for sorting -->
+                                            <th onclick="sortTable(0)">DiagnosisDate &#x25B2;&#x25BC;</th>
+                                            <th>BP</th>
+                                            <th>HR</th>
+                                            <th>Temp</th>
+                                            <th>O2Sat</th>
+                                            <th>PS</th>
+                                            <th>RR</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            
+                                        <tr class="vital-signs-table-body">
+                                            <td>10/8/2023, 4:30:57 PM</td>
+                                            <td>110/30</td>
+                                            <td>65</td>
+                                            <td>36.5</td>
+                                            <td>98%</td>
+                                            <td>2/10</td>
+                                            <td>18</td>
+                                            <td>
+                                                <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="View"
+                                                    onclick="window.location=''">
+                                                    <i class="fa fa-eye color-muted"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="Edit"
+                                                    onclick="window.location=''">
+                                                    <i class="fa fa-pencil color-muted"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="btn btn-square btn-danger"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="Close"><i
+                                                    class="fa fa-close color-danger"></i>
+                                                </a>
+                                            </td>
+                                        </tr> 
+    
+                                        <tr class="vital-signs-table-body">
+                                            <td>10/8/2024, 4:30:57 PM</td>
+                                            <td>120/80</td>
+                                            <td>75</td>
+                                            <td>36.5</td>
+                                            <td>98%</td>
+                                            <td>2/10</td>
+                                            <td>18</td>
+                                            <td>
+                                                <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="View"
+                                                    onclick="window.location=''">
+                                                    <i class="fa fa-eye color-muted"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="Edit"
+                                                    onclick="window.location=''">
+                                                    <i class="fa fa-pencil color-muted"></i>
+                                                </a>
+                                                <a href="javascript:void()" class="btn btn-square btn-danger"
+                                                    data-toggle="tooltip" type="button" data-placement="top" title="Close"><i
+                                                        class="fa fa-close color-danger"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!-- Additional rows here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- End of Table card body -->
+    
+                    </div>
+                </div>
+                <!-- End of Table in the left side -->
+    
+            </div>
+    
+        </div>
+    </div>
+    
+    
+                                    </div>
+                                    <!-- End of Vital Signs Tab -->
+    
+                                    <div class="tab-pane fade" id="diagnosisAndProcedure">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+    
+    
+    
+                                    <div class="tab-pane fade" id="doctorsOrder">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="nursesNotes">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="intakeAndOutput">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="medicationLog">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="ivFluid">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+                                    <div class="tab-pane fade" id="charges">
+                                        <div class="pt-4">
+    
+    
+                                        </div>
+    
+                                    </div>
+                                <!--End of Testing Tab -->
+    
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+    <div class="copyright">
+        <!-- <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p> -->
+    </div>
+</div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="admin_medcss/theme/vendor/global/global.min.js"></script>
+<script src="admin_medcss/theme/js/quixnav-init.js"></script>
+<script src="admin_medcss/theme/js/custom.min.js"></script>
+
+<script src="admin_medcss/theme/vendor/chartist/js/chartist.min.js"></script>
+
+<script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+<script src="admin_medcss/theme/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
+
+<script src="admin_medcss/theme/js/dashboard/dashboard-2.js"></script>
+<!-- Circle progress -->
+
+<!-- Datatable -->
+<script src="admin_medcss/theme/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="admin_medcss/theme/js/plugins-init/datatables.init.js"></script>
+
+<script src="admin_medcss/theme/vendor/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="admin_medcss/theme/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Form validate init -->
+<script src="admin_medcss/theme/js/plugins-init/jquery.validate-init.js"></script>
+
+<!-- Form step init -->
+<script src="admin_medcss/theme/js/plugins-init/jquery-steps-init.js"></script>
+
+<!-- Full Calendar -->
+<script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+<script src="admin_medcss/theme/vendor/jqueryui/js/jquery-ui.min.js"></script>
+<script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+<script src="admin_medcss/theme/vendor/fullcalendar/js/fullcalendar.min.js"></script>
+<script src="admin_medcss/theme/js/plugins-init/fullcalendar-init.js"></script>
+
+<!-- Daterangepicker -->
+<script src="admin_medcss/theme/vendor/common/common.min.js"></script>
+<script src="admin_medcss/theme/js/custom.min.js"></script>
+<script src="admin_medcss/theme/js/settings.js"></script>
+<script src="admin_medcss/theme/js/gleek.js"></script>
+<script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+
+<script src="admin_medcss/theme/vendor/moment/moment.js"></script>
+<script src="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="admin_medcss/theme/js/plugins-init/form-pickers-init.js"></script>
+
+<script src="/js/emergency_registration.js"></script>
+    
+    
+    
+    <!-- custom script -->
+    <script src="form/script.js"></script>
+    
+    <!-- Vanilla Datepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    
+    <script>
+        var elems = document.querySelectorAll('.date-picker');
+    
+        elems.forEach(function (elem) {
+            new Datepicker(elem, {
+                autohide: true,            // Hide after selection
+                format: 'yyyy-mm-dd',      // Format for backend/database storage
+                altInput: true,            // Enable alternate input display
+                altFormat: 'MM dd, yyyy',  // Display format for users
+                todayHighlight: true       // Highlight today's date
+            });
+        });
+    </script>
+
+</body>
+
+</html>

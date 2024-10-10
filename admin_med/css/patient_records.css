@@ -1,0 +1,61 @@
+body{
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.Patient-Records{
+
+    width: 50%; /* Adjust the width as needed */
+    margin: 0 auto; /* This centers the div horizontally */
+
+}
+
+.Patient-Records-Table {
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto; /* This centers the table horizontally */
+    margin-top: 20%;
+    border-collapse: collapse; /* Optional: for table styling */
+}
+
+.Patient-Table-Column{
+    margin-right: 10px;
+}
+
+td.Patient-Name-Data{
+    margin-left: 1%;
+}
+
+.patient-view{
+    border: 1px;
+    radius: 50px;
+}
+
+.add-patient{
+    width: 25%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-patient-button{
+    background-color: #4CAF50; 
+    border: none; 
+    color: white; 
+    padding: 15px 32px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; /* Set font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */    
+    margin-top: 5%;
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto; /* This centers the table horizontally */
+    margin-top: 10%;
+}
+
+.add-patient-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

@@ -1,0 +1,19 @@
+body{
+    background-color: grey;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.Patient-Records{
+    background-color: white;
+    align-items: center;
+
+}
+
+.Patients-Records-Table{
+    align-items: center;
+}
+
+th Patient-Name{
+    font-size: 30px;
+}
