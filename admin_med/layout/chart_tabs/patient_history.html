@@ -1,0 +1,352 @@
+<link rel="stylesheet" href="/admin_med/css/vitalsigns.css">
+<link rel="stylesheet" href="/admin_med/css/logs.css">
+
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="/images/syncore_logo.png">
+<link href="admin_medcss/theme/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/chartist/css/chartist.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+<!-- Form step -->
+<link href="admin_medcss/theme/vendor/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+<!-- Datatable -->
+<link href="admin_medcss/theme/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<!-- Calendar -->
+<link href="admin_medcss/theme/vendor/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<!-- Page plugins css -->
+<link href="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<link id="custom-font" type="text/css" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Lato" />
+<!-- <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/defaultV2.css?v=de56e2d" /> -->
+
+<link href="admin_medcss/reg_form/css/defaultV2.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-common.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-design.css" rel="stylesheet" />
+
+<!-- custom stylesheet -->
+
+<!-- Vanilla Datepicker -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/css/datepicker.min.css">
+
+<link rel="stylesheet" href="/admin_med/css/emergency_registration.css">
+<script src="/js/patient_charts.js"></script>
+<script src="/js/charts_graph.js"></script>
+<script src="/js/charts_reminder.js"></script>
+<script src="/js/charts_vital_colors.js"></script>
+<script src="/js/history_mode.js"></script>
+<script src="/js/data_validation.js"></script>
+
+
+<script src="/admin_med/js/tooltips.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/current_date_time.js"></script>
+<script src="/js/history_mode.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<div>
+    <button class="btn btn-outline-primary" onclick="historyToggleDivs()">Toggle View</button>
+    <div>
+        <div class="row grid">
+            <div id="historyDiv" class="custom-input col-xl-4 col-xxl-12">
+
+                <div class="history-card-input card-input-green">
+                    <div class="card-header">
+                        <h4 class="input-header" id="historyInputHeader">Input Mode</h4>
+                    </div>
+                    
+                    <div class="card-body">
+
+
+                        <form action="{{ isset($ep_medical_history) ? route('ep_medical_history.ep_medical_history_update', $ep_medical_history->ep_medical_history_id) : '/emergency/ep-medical-history/store' }}" id="epHistoryForm" method="POST" onsubmit="">
+                       
+            
+                        <!-- Id and Date Section -->
+                        <div class="id-and-date">
+                    
+                            <!-- Id and Date Section Text -->
+                            <div class="row id-and-date-text">
+                    
+                                <div class="col-md-6">
+                                    <h5 class="id-and-date-label">Date</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="id-and-date-label">Time</h5>
+                                </div>
+                            </div>
+                            <!-- End of Id and Date Section Text -->
+                    
+                            <!-- Id and Date Section Input -->
+                            <div class="row id-and-date-input">
+                                <div class="col-md-6">
+                                    <input type="date" name="ep_medical_history_date" id="history-date-input" class="form-control date-input datetime-input">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" name="ep_medical_history_time" id="history-time-input" class="form-control time-input datetime-input">
+                                </div>
+                            </div>
+                            <!-- End of Id and Date Section Input -->
+                    
+                        </div>
+                    
+                    
+                    
+                        <div class="diagnosis-remarks">
+                            <div class="col-md-4">
+                                <h5 class="diagnosis-text">Diagnosis</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="ep_medical_history_diagnosis" id="diagnosisInput" class="diagnosis-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="treatment-remarks">
+                            <div class="col-md-4">
+                                <h5 class="treatment-text">Treatment</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="ep_medical_history_treatment" id="treatmentInput" class="treatment-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="surgeries-remarks">
+                            <div class="col-md-4">
+                                <h5 class="surgeries-text">Surgeries</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="ep_medical_history_surgery" id="surgeriesInput" class="surgeries-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medication-remarks">
+                            <div class="col-md-4">
+                                <h5 class="medication-text">Medications</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea name="ep_medical_history_medications" id="medicationInput" class="medication-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
+                    
+                    
+                        <!-- Footer Buttons -->
+                        <div class="card-footer d-flex justify-content-end">
+                         
+                    
+                            <!-- ASDASDASDASD -->
+                    
+                            <button type="button" class="btn btn-secondary" id="backToInputButtonHistory" style="display: none;" onclick="showHistoryInputMode();">Back to Input Mode</button>
+                    
+                            <button type="button" id="historyCancelBtn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Clear</button>
+                    
+                            <button type="submit" class="btn btn-primary ms-3" id="editSubmitHistory" style="display: none;" onclick="showHistorySaveAlert(); return false;">
+                                Save Changes
+                            </button>
+                    
+                            <button type="submit" id="historySaveBtn" class="btn btn-primary ms-3">Save</button>
+
+                        </div>
+                    </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+            <!-- Table in the left side -->
+            <div id="mainDiv" class="custom-table col-xl-8 col-xxl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Patient's Medical History</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="historyLogsSection" style="display: none;">
+                            <h5>Activity Logs</h5>
+                            <ul id="logEntries">
+                            </ul>
+                        </div>
+
+                        <div id="historyTableContainer">
+                            <table class="chart-tab-table-left" id="vitalSignsTable">
+                                <thead class="chart-tab-table-header">
+                                    <tr class="chart-tab-header">
+                                        <th onclick="sortTable(0)">Date &#x25B2;&#x25BC;</th>
+                                        <th>Diagnoses</th>
+                                        <th>Treatments</th>
+                                        <th>Surgeries</th>
+                                        <th>Medications</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="chart-tab-table-body">
+                                        <td>07/11/2024</td>
+                                        <td>Patient was diag...</td>
+                                        <td>Patient was diag...</td>
+                                        <td>Patient was diag...</td>
+                                        <td>Patient was diag...</td>
+                                        <td>
+                                        <a href="javascript:void(0)" class="btn btn-square btn-primary mr-3"
+                                            data-toggle="tooltip" data-placement="top" title="View"
+                                            onclick="makeHistoryFormReadonly();">
+                                            <i class="fa fa-eye color-muted"></i>
+                                        </a>
+
+                                        <a href="javascript:void(0)" class="btn btn-square btn-secondary mr-3"
+                                            data-toggle="tooltip" data-placement="top" title="Edit"
+                                            onclick="enterHistoryEditMode();">
+                                            <i class="fa fa-pencil color-muted"></i>
+                                        </a>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div class="tooltip-container" style="position: relative; display: inline-block;">
+                            <label class="view-logs-label" id="viewHistoryLogs" for="tooltip" onclick="historyToggleLogs()">
+                                <strong>View Logs</strong>
+                            </label>
+                        </div>
+
+                        <div>
+                            <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- End of Table in the left side -->
+
+        </div>
+
+    </div>
+</div>
+
+    <script src="/admin_med/js/tooltips.js"></script>
+    <script src="/admin_med/js/patient_charts.js"></script>
+    <script src="/admin_med/js/charts_graph.js"></script>
+    <script src="/admin_med/js/charts_mode.js"></script> 
+    <script src="/admin_med/js/charts_reminder.js"></script>
+    <script src="/admin_med/js/charts_vital_color.js"></script> 
+    <script src="/admin_med/js/emergency_registration.js"></script>
+    
+    
+    
+    
+    <script src="admin_medcss/theme/vendor/global/global.min.js"></script>
+    <script src="admin_medcss/theme/js/quixnav-init.js"></script>
+    <script src="admin_medcss/theme/js/custom.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    
+    
+    <script src="admin_medcss/theme/vendor/chartist/js/chartist.min.js"></script>
+    
+    <script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+    <script src="admin_medcss/theme/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
+    
+    <script src="admin_medcss/theme/js/dashboard/dashboard-2.js"></script>
+    <!-- Circle progress -->
+    
+    <!-- Datatable -->
+    <script src="admin_medcss/theme/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="admin_medcss/theme/js/plugins-init/datatables.init.js"></script>
+    
+    <script src="admin_medcss/theme/vendor/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="admin_medcss/theme/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Form validate init -->
+    <script src="admin_medcss/theme/js/plugins-init/jquery.validate-init.js"></script>
+    
+    <!-- Form step init -->
+    <script src="admin_medcss/theme/js/plugins-init/jquery-steps-init.js"></script>
+    
+    <!-- Full Calendar -->
+    <script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+    <script src="admin_medcss/theme/vendor/jqueryui/js/jquery-ui.min.js"></script>
+    <script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+    <script src="admin_medcss/theme/vendor/fullcalendar/js/fullcalendar.min.js"></script>
+    <script src="admin_medcss/theme/js/plugins-init/fullcalendar-init.js"></script>
+    
+    <!-- Daterangepicker -->
+    <script src="admin_medcss/theme/vendor/common/common.min.js"></script>
+    <script src="admin_medcss/theme/js/custom.min.js"></script>
+    <script src="admin_medcss/theme/js/settings.js"></script>
+    <script src="admin_medcss/theme/js/gleek.js"></script>
+    <script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+    
+    <script src="admin_medcss/theme/vendor/moment/moment.js"></script>
+    <script src="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
+    
+    <script src="admin_medcss/theme/js/plugins-init/form-pickers-init.js"></script>
+    
+        
+    
+        
+        <!-- custom script -->
+        <script src="form/script.js"></script>
+        
+        <!-- Vanilla Datepicker JS -->
+        <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+        
+        <script>
+            var elems = document.querySelectorAll('.date-picker');
+        
+            elems.forEach(function (elem) {
+                new Datepicker(elem, {
+                    autohide: true,            // Hide after selection
+                    format: 'yyyy-mm-dd',      // Format for backend/database storage
+                    altInput: true,            // Enable alternate input display
+                    altFormat: 'MM dd, yyyy',  // Display format for users
+                    todayHighlight: true       // Highlight today's date
+                });
+            });
+        </script>
+

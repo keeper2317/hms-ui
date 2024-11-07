@@ -1,0 +1,55 @@
+
+
+.input-wrapper {
+    padding-left: 30px; /* Adjust this value for spacing */
+}
+
+.impairments-evaluation-text, .activity-restriction-text, .personal-factor-text, .environmental-factor-text {
+    margin-top: 2px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.impairments-evaluation-input, .activity-restriction-input, .personal-factor-input, .environmental-factor-input {
+    height: 50px;
+    width: 100%; /* Take full width of the parent */
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-bottom: 4px;
+}
+
+
+
+
+.evaluation-text, .diagnosis-text, .prognosis-text{
+    margin-top: 2px;
+    display: flex;
+    justify-content: flex-start;
+    font-weight: bold;  
+    white-space: nowrap;
+    margin-left: -15px;
+
+}
+
+.diagnosis-input, .prognosis-input{
+    height: 50px;
+    width: 100%; /* Take full width of the parent */
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-bottom: 4px;
+}
+
+.add-button {
+    background-color: transparent; /* Transparent background */
+    color: grey; /* Grey text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    padding: 5px 10px; /* Padding */
+    margin-bottom: 10px; /* Space below the button */
+}
+
+.add-button:hover {
+    opacity: 0.8; /* Slightly darken on hover for visual feedback */
+}

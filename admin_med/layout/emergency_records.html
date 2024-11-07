@@ -59,7 +59,80 @@
 
 <link rel="stylesheet" href="/css/emergency_registration.css">
 
+<style>
+    /* Main Navigation styling */
+.main-navigation {
+    background-color: white;
+    padding: 3px 8px; /* Reduce padding for less height */
+    margin-left: -17.1875rem;
+}
 
+.new-header-navigation{
+    margin-bottom: 17rem;
+}
+
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Align the links horizontally */
+    justify-content: flex-start; /* Align the items to the left */
+    gap: 20px; /* Add space between the navigation items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li {
+    position: relative; /* Required for dropdowns */
+    padding: 0; /* Remove any padding from list items */
+    margin: 0; /* Remove margin if present */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #003263; /* Text color */
+    padding: 3px 8px; /* Add padding to make the clickable area larger */
+    display: inline-flex; /* Ensure the icon and text are aligned */
+    align-items: center; /* Vertically align the icon and text */
+    border-radius: 5px; /* Slight rounding for aesthetics */
+    font-size: 11px;
+}
+
+.nav-links a:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Dropdown menu */
+.nav-links li ul.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position dropdown relative to the parent */
+    top: 100%; /* Align dropdown directly under the parent link */
+    left: 0; /* Align dropdown to the left */
+    background-color: #fff; /* White background for dropdown */
+    list-style: none; /* Remove bullets from dropdown */
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
+}
+
+.nav-links li ul.dropdown li {
+    width: 180px; /* Set a fixed width for the dropdown items */
+}
+
+.nav-links li ul.dropdown a {
+    padding: 10px 20px; /* Add padding to dropdown links */
+    display: block; /* Make the dropdown links full-width */
+}
+
+.nav-links li ul.dropdown a:hover {
+    background-color: #f0f0f0; /* Highlight dropdown item on hover */
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover ul.dropdown {
+    display: block; /* Display dropdown when hovering over parent */
+}
+
+</style>
 </head>
 
 <body>
@@ -93,12 +166,6 @@
                 <img class="logo-compact" src="/images/syncore-text.png" alt="">
                 <img class="brand-title" src="/images/syncore-text.png" alt="">
             </a>
-        
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
         </div>
         <!--**********************************
             Nav header end
@@ -111,69 +178,37 @@
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
+                        <!-- Left side (brand, logo, etc.) can go here -->
                         <div class="header-left"></div>
         
+                        <!-- Right side (notifications, profile dropdown, etc.) -->
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" id="notificationToggle">
                                     <i class="mdi mdi-bell"></i>
                                     <div class="pulse-css"></div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
+                                    <ul class="list-unstyled" id="notification-list">
+                                       
+                                        <li class="media dropdown-item notification-item"
+                                            id="notification-{{ $notification->notification_id }}"
+                                            data-id="{{ $notification->notification_id }}">
+                                            <span class="success"><i class="ti-check"></i></span>
                                             <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
+                                                <p>
+                                                    <strong></strong>
+                                                    
+                                                </p>
                                             </div>
-                                            <span class="notify-time">3:20 am</span>
+                                            <span class="notify-time"></span>
                                         </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
+                                  
                                     </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
+        
+                                    <a class="all-notification" href="{{ route('notifications.allNotifications') }}">
+                                        See all notifications <i class="ti-arrow-right"></i>
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown header-profile">
@@ -190,10 +225,11 @@
                                         <span class="ml-2">Inbox </span>
                                     </a>
                                     <form action="/logout" method="POST">
-                                        <a class="dropdown-item block py-2 pr-5 pl-4">
+                                        
+                                        <button type="submit" class="dropdown-item block py-2 pr-5 pl-4 bg-transparent border-0">
                                             <i class="icon-key"></i>
-                                            <span class="ml-2">Logout </span>
-                                        </a>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
                                     </form>
                                 </div>
                             </li>
@@ -201,63 +237,31 @@
                     </div>
                 </nav>
             </div>
+            <div class="new-header-navigation">
+                <nav class="main-navigation">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="mdi mdi-home mdi-24px"></i> Home</a></li>
+                    <li><a href="#"><i class="mdi mdi-calendar mdi-24px"></i> Calendar</a></li>
+                    <li>
+                        <a href="#"><i class="mdi mdi-folder-outline mdi-24px"></i> Records</a>
+                        <ul class="dropdown">
+                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
+                            <li><a href="/admin_med/layout/inpatient.html">Inpatients</a></li>
+                            <li><a href="javascript:void()">Out-Patients</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="mdi mdi-monitor mdi-24px"></i> Transactions</a></li>
+                </ul>
+                </nav>
+            </div>
+        
         </div>
         
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
 
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="quixnav">
-            <div class="quixnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Dashboard</li>
-                    <li>
-                        <a href="{{ url('') }}" aria-expanded="false">
-                            <i class="mdi mdi-home mdi-24px"></i>
-                            <span class="nav-text">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="calendar" aria-expanded="false">
-                            <i class="mdi mdi-calendar mdi-24px"></i>
-                            <span class="nav-text">Calendar</span>
-                        </a>
-                    </li>
-                    <li class="nav-label">Patient</li>
-                    <li>
-                        <a href="overall_records" aria-expanded="false">
-                            <i class="icon icon-single-04"></i>
-                            <span class="nav-text">Overview</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="records" aria-expanded="false">
-                            <i class="mdi mdi-folder-outline mdi-24px"></i>
-                            <span class="nav-text">Records</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
-                            <li><a href="inpatient_records" aria-expanded="false">In-Patients</a>
-                            </li>
-                            <li><a href="javascript:void()">Out-Patients</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Transactions</li>
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="mdi mdi-monitor mdi-24px"></i>
-                            <span class="nav-text">Transactions</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
+
         
         <!--**********************************
             Content body start
@@ -289,7 +293,7 @@
                                     
                                                 <div class="modal-body">
                                                     <form action="/emergency/store" class="step-form-horizontal" method="POST" onsubmit="">
-                                                    @csrf
+                                                   
                                                         <div>
                                                             <h4>Information</h4>
                                                             <section>
@@ -313,52 +317,35 @@
                                                                     <small class="time-label">Hour Minutes</small>
                                                                 </div>
                                     
-                                                                <div class="row form-material align-items-center">
-                                    
-                                    
-                                                                    <!-- <div class="col-lg-4 mb-2">
-                                                                        <div class="form-group form-inline">
-                                    
-                                                                            <input type="checkbox" id="unidentifiedCB" class="unidentifiedCB">
-                                                                            <label for="unidentifiedCB" class="unidentified-label">Unidentified Patient</label>
-                                                                        </div>
+                                                                <div class="row d-flex justify-content-between">
+
+                                                                    <div class="form-group ml-3">
+                                                                        <label for="patientSearch">Search Patient Name</label>
+                                                                        <input type="text" id="patientSearch" class="form-control" placeholder="Type patient name..." autocomplete="off">
+                                                                        
+                                                                        <!-- Dropdown to show the results -->
+                                                                        <div id="searchResults" class="dropdown-menu show"></div>
                                                                     </div>
                                     
-                                                                    <div class="col-lg-4 mb-2">
-                                                                        <button type="button" id="generateID-btn" class="generate-btn">
-                                                                            Generate Temporary ID
-                                                                        </button>
-                                                                    </div>
-                                    
-                                                                    <input type="hidden" id="patientTemporaryID" name="patient_temporary_id">
-                                                                    @if ($errors->has('patient_temporary_id'))
-                                                                        @foreach ($errors->get('patient_temporary_id') as $error)
-                                                                            <span style="color:red;">{{ $error }}</span><br>
-                                                                        @endforeach
-                                                                    @endif -->
-                                    
-                                    
-                                    
-                                                                    <!-- WORKING CODE FOR UNIDENTIFIED -->
-                                                                    <div class="col-lg-4 mb-2">
-                                                                        <div class="form-group form-inline">
+                                                                    <div class="form-group">
+                                                                        
+                                                                        <div class="row mr-5 mt-4">
                                                                             <!-- Move the input before the label for proper CSS targeting -->
-                                                                            <input type="checkbox" id="unidentifiedCB" class="unidentifiedCB">
-                                                                            <label for="unidentifiedCB" class="unidentified-label">Unidentified Patient</label>
-                                                                        </div>
-                                                                    </div>
-                                    
-                                                                    <div class="col-lg-4 mb-2">
-                                                                        <button type="button" id="generateID-btn" class="generate-btn">
+                                                                            <input type="checkbox" id="unidentifiedCB" class="unidentifiedCB mt-2">
+                                                                            <label for="unidentifiedCB" class="unidentified-label mt-2">Unidentified Patient</label>
+                                                                            <button type="button" id="generateID-btn" class="generate-btn ml-5">
                                                                             Generate Temporary ID
-                                                                        </button>
-                                                                    </div>
+                                                                            </button>
+                                                                        </div>
+                                                                    
                                     
-                                                                    <div class="col-lg-4 mb-2">
-                                                                        <span class="selection-message" id="sex-selection-message"></span>
+                                                                        <span class="selection-message ml-5" id="sex-selection-message">&nbsp;</span>
+                                                                                        
+                                                                        <input type="hidden" id="patientTemporaryID" name="patient_temporary_id">
+                                                                       
                                                                     </div>
-                                    
-                                                                    <input type="hidden" id="patientTemporaryID" name="patient_temporary_id">
+                                                                    <!-- WORKING CODE FOR UNIDENTIFIED -->
+                                       
                                                                 </div>
                                                                 <!-- END of WORKING CODE FOR UNIDENTIFIED -->
                                     
@@ -519,6 +506,27 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="w-100"></div>
+
+                                                                    <div class="col-lg-3 mb-5">
+                                                                        <h4 style="margin-bottom: -15px;"> Bed Assignment </h4>
+                                                                    </div>
+                                                                    <div class="w-100"></div>
+
+                                                                    <div class="col-lg-3 mb-3">
+                                                                        <div class="form-group">
+                                                                            <label class="text-label">Assign Bed</label>
+                                                                            <div class="input-group">
+                                                                                <select class="form-control" name="bed_assignment" id="bed-assignment-select">
+                                                                                    <option value="">Please Select</option>
+                                                                                    <optgroup label="-- Available --" id="available-beds"></optgroup>
+                                                                                    <optgroup label="-- Occupied --" id="occupied-beds"></optgroup>
+                                                                                </select>
+                                                                            </div>
+                                                                            
+                                                                            <div id="message" style="margin-top: 20px;"></div>
+                                                                        </div>
+                                                                    </div>
                                     
                                     
                                                                 </div>
@@ -553,8 +561,8 @@
                                                 <tr>
                                                     <th>Last name</th>
                                                     <th>First name</th>
+                                                    <th>Bed Number</th>
                                                     <th>Priority Level</th>
-                                                    <th>Status</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -564,41 +572,701 @@
                                                     <tr>
                                                         <td>Doe</td>
                                                         <td>John</td>
+                                                        <td>5</td>
                                                         <td>3 - Urgent</span></td>
-                                                        <td></span></td>
                                                         <td>
                                                             <a href="javascript:void()" class="btn btn-square btn-primary mr-4"
                                                                 data-toggle="tooltip" type="button" data-placement="top" title="View"
                                                                 onclick="window.location.href='/admin_med/layout/emergency_view.html'">
                                                                 <i class="fa fa-eye color-muted">View</i> </a>
-                                                            <a href="javascript:void(0)" class="btn btn-square btn-secondary mr-4"
-                                                                data-toggle="tooltip" type="button" data-placement="top" title="Edit"
-                                                                onclick="window.location.href='/admin_med/layout/emergency_edit.html'">
-                                                                <i class="fa fa-pencil color-muted">Edit</i>
-                                                             </a>
-                                                            <a href="javascript:void()" class="btn btn-square btn-danger"
-                                                                data-toggle="tooltip" type="button" data-placement="top" title="Close"><i
-                                                                    class="fa fa-close color-danger">Delete</i></a>
+                                                            <a href="javascript:void(0)" id="assignRoomBtn" class="btn btn-square btn-warning mr-4"
+                                                                data-toggle="modal"
+                                                                data-target="#roomReassignmentModal"
+                                                                data-current-bed="5"
+                                                                data-emergency-patient-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                                onclick="openRoomReassignmentModal(this)"> <!-- Pass 'this' to the function -->
+                                                                <i class="fa fa-bed color-muted">Re-assign</i>
+                                                            </a>
+                                                            <input type="hidden" id="emergencyPatientId" value="">
+
+                                                            <!-- Room Reassignment Modal -->
+                                                            <div class="modal fade" id="roomReassignmentModal" tabindex="-1" role="dialog" aria-labelledby="roomReassignmentModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="roomReassignmentModalLabel">Reassign Room</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <p>Current Room: <strong id="currentRoomNumber">Bed N/A</strong></p>
+                                                                            <div class="form-group">
+                                                                                <label for="newRoom">Select New Room:</label>
+                                                                                <select id="newRoom" class="form-control">
+                                                                                    <option value="">Please Select</option>
+                                                                                    <!-- Options will be populated here via JavaScript -->
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-primary" onclick="confirmRoomReassignment()">Confirm</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" id="registerBtn" class="btn btn-square btn-success"
+                                                                data-toggle="modal" data-target="#patientAdmissionModal"
+                                                                data-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                                data-first-name="{{ $emergency_patient->emergency_first_name }}"
+                                                                data-middle-name="{{ $emergency_patient->emergency_middle_name ?? '' }}"
+                                                                data-last-name="{{ $emergency_patient->emergency_last_name }}"
+                                                                data-extension="{{ $emergency_patient->emergency_extension ?? '' }}"
+                                                                data-date-of-birth="{{ $emergency_patient->emergency_dob }}"
+                                                                data-sex="{{ $emergency_patient->emergency_sex }}"
+                                                                data-civil-status="{{ $emergency_patient->emergency_informations->ep_civil_status ?? '' }}"
+                                                                data-employment="{{ $emergency_patient->emergency_informations->ep_employment ?? '' }}"
+                                                                data-phone="{{ $emergency_patient->emergency_informations->ep_phone ?? '' }}"
+                                                                data-email="{{ $emergency_patient->emergency_informations->ep_email ?? '' }}"
+                                                                data-religion="{{ $emergency_patient->emergency_informations->ep_religion ?? '' }}"
+                                                                data-nationality="{{ $emergency_patient->emergency_informations->ep_nationality ?? '' }}"
+                                                                data-address="{{ $emergency_patient->emergency_informations->ep_full_address ?? '' }}"
+                                                                data-current-bed="{{ $emergency_patient->bed_assignments?->bed_no ?? 'N/A' }}"
+                                                                onclick="openRoomReassignmentModal(this); populateForm(this);"
+                                                                > <i class="fa fa-user-plus color-success"></i>Admit</button>
+                                                                
+                                                                <div class="modal fade" id="patientAdmissionModal" tabindex="-1" role="dialog">
+                                                                    <div class="modal-dialog modal-lg" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h2 class="modal-title" id="exampleModalLabel">Admit a Patient</h2>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+
+                                                                            <div class="modal-body">
+                                                                                <form action="/patient/store" class="step-form-horizontal" method="POST" id="registrationForm">
+                                                                                    @csrf
+
+                                                                                    <input type="hidden" name="emergency_patient_id" class="form-control" placeholder="" required>
+                                                                                    <!-- Step 1: Information -->
+                                                                                    <div class="step" id="step1">
+                                                                                        <h4>Step 1: Information</h4>
+                                                                                        <div class="form-group">
+                                                                                            <section class="patientInfoSection">
+                                                                                                <div class="row form-material">
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Patient Name <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="middle_name" class="form-control" placeholder="Middle Name">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-2 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="extension" class="form-control" placeholder="Ext.">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <label class="text-label">Date of Birth<span class="form-required text-danger">*</span></label>
+                                                                                                        <input type="text" class="form-control" name="dob" placeholder="2017-06-04" id="mdate" required>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Sex <span class="form-required text-danger">*</span></label>
+                                                                                                            <select class="custom-select form-control" id="" name="sex" data-component="dropdown" required="" aria-label="Sex">
+                                                                                                                <option value="">Please Select</option>
+                                                                                                                <option value="Male">Male</option>
+                                                                                                                <option value="Female">Female</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Civil Status <span class="form-required text-danger">*</span></label>
+                                                                                                            <select class="custom-select form-control" id="" name="civil_status" data-component="dropdown" required="" aria-label="Civil Status">
+                                                                                                                <option value="">Please Select</option>
+                                                                                                                <option value="Single">Single</option>
+                                                                                                                <option value="Married">Married</option>
+                                                                                                                <option value="Divorced">Divorced</option>
+                                                                                                                <option value="Legally separated">Legally separated</option>
+                                                                                                                <option value="Widowed">Widowed</option>
+                                                                                                                <option value="Other">Other</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Employment <span class="form-required text-danger">*</span></label>
+                                                                                                            <select class="custom-select form-control" id="" name="employment" data-component="dropdown" required="" aria-label="Employment">
+                                                                                                                <option value="">Please Select</option>
+                                                                                                                <option value="Employed">Employed</option>
+                                                                                                                <option value="Self-Employed">Self-Employed</option>
+                                                                                                                <option value="Unemployed">Unemployed</option>
+                                                                                                                <option value="Retired">Retired</option>
+                                                                                                                <option value="Student">Student</option>
+                                                                                                                <option value="Other">Other</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Phone Number <span class="form-required text-danger">*</span></label>
+                                                                                                            <div class="input-group">
+                                                                                                                <input type="tel" name="phone" class="form-control" placeholder="(+63) 912-345-6780" required>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Email Address <span class="form-required text-danger">*</span></label>
+                                                                                                            <div class="input-group">
+                                                                                                                <input type="email" name="email" class="form-control" id="email"placeholder="example@example.com" required>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Religion <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="religion" class="form-control" placeholder="Religion">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Nationality <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="nationality" class="form-control" placeholder="Nationality">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-7 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Permanent Address <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="street_address" class="form-control" placeholder="House No. Street Name, Barangay" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="city" class="form-control" placeholder="City/Municipality" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-2 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="zip" class="form-control" placeholder="ZIP Code">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </section>
+                                                                                        </div>
+                                                                                        <!-- Add more fields as needed -->
+                                                                                    </div>
+
+                                                                                    <!-- Step 2: Patient Details -->
+                                                                                    <div class="step" id="step2" style="display: none;">
+                                                                                        <h4>Step 2: Patient Emergency Contact</h4>
+                                                                                        <div class="form-group">
+                                                                                            <section class="patientEmergencySection">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-lg-3 mb-2 mt-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Emergency Contact <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="emergency_contact_first_name" class="form-control" placeholder="First Name" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203 </label>
+                                                                                                            <input type="text" name="emergency_contact_middle_name" class="form-control" placeholder="Middle Name">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="emergency_contact_last_name" class="form-control" placeholder="Last Name" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-2 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">&#8203</label>
+                                                                                                            <input type="text" name="emergency_contact_extension" class="form-control" placeholder="Ext.">
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Relationship <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="text" name="relationship" class="form-control" placeholder="Relationship" required>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Contact Number <span class="form-required text-danger">*</span></label>
+                                                                                                            <div class="input-group">
+                                                                                                                <input type="text" name="emergency_phone" class="form-control" placeholder="(+63) 912-345-6780" required>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Telephone Number </label>
+                                                                                                            <div class="input-group">
+                                                                                                                <input type="text" name="emergency_telephone" class="form-control" placeholder="(02) 8123-4567">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-3 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Email Address</label>
+                                                                                                            <div class="input-group">
+                                                                                                                <input type="email" name="emergency_email" class="form-control" id="emial1" placeholder="example@example.com">
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </section>
+                                                                                        </div>
+                                                                                        <!-- Add more fields as needed -->
+                                                                                    </div>
+
+                                                                                    <!-- Step 3: Patient Health Information -->
+                                                                                    <div class="step" id="step3" style="display: none;">
+                                                                                        <h4>Step 3: Patient Health Information</h4>
+                                                                                        <div class="form-group">
+                                                                                            <section class="patientHealthSection">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-lg-6 mb-3 mt-2">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Admission Date <span class="form-required text-danger">*</span></label>
+                                                                                                            <input type="date" name="admission_date" class="form-control" >
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-12 mb-1">
+                                                                                                        <h5></h5>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Reason for Admission <span class="form-required text-danger">*</span></label>
+                                                                                                            <textarea name="reason_registration" class="form-control" rows="2" required></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Additional Notes</label>
+                                                                                                            <textarea name="additional_note" class="form-control" rows="2"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-lg-12 mb-1">
+                                                                                                        <h5>Kindly indicate "N/A" or leave blank if not applicable.</h5>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Past Surgeries/Medical Procedures:</label>
+                                                                                                            <textarea name="past_surgeries" class="form-control" rows="2"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Current Medications:</label>
+                                                                                                            <textarea name="current_medications" class="form-control" rows="2"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Known Allergies:</label>
+                                                                                                            <textarea name="known_allergies" class="form-control" rows="2"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <label class="text-label">Chronic/Other Conditions:</label>
+                                                                                                            <textarea name="chronic_conditions" class="form-control" rows="2"></textarea>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <!-- Does the patient smoke? -->
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <fieldset class="form-group">
+                                                                                                            <div class="row">
+                                                                                                                <label class="col-form-label col-sm-7 pt-0">Does the patient smoke?</label>
+                                                                                                                <div class="col-sm-6">
+                                                                                                                    <div class="form-check form-group">
+                                                                                                                        <label class="form-check-label mr-3">
+                                                                                                                            <input class="form-check-input" type="radio" name="patient_smoke" value="Yes"> Yes
+                                                                                                                        </label>
+                                                                                                                        <label class="form-check-label">
+                                                                                                                            <input class="form-check-input" type="radio" name="patient_smoke" value="No"> No
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </fieldset>
+                                                                                                    </div>
+
+                                                                                                    <!-- Does the patient drink alcohol? -->
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <fieldset class="form-group">
+                                                                                                            <div class="row">
+                                                                                                                <label class="col-form-label col-sm-7 pt-0">Does the patient drink alcohol?</label>
+                                                                                                                <div class="col-sm-6">
+                                                                                                                    <div class="form-check form-group">
+                                                                                                                        <label class="form-check-label mr-3">
+                                                                                                                            <input class="form-check-input" type="radio" name="patient_alcohol" value="Yes"> Yes
+                                                                                                                        </label>
+                                                                                                                        <label class="form-check-label">
+                                                                                                                            <input class="form-check-input" type="radio" name="patient_alcohol" value="No"> No
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </fieldset>
+                                                                                                    </div>
+                                                                                                    <div class="col-lg-12 mb-1">
+                                                                                                        <h5>Does the patient have any of the following: </h5>
+                                                                                                    </div>
+                                                                                                    <!-- Health Conditions Checkboxes -->
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="" value="Alzheimer's Disease" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check1">Alzheimer's Disease</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check2" value="Cancer" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check2">Cancer</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check3" value="Heart Disease" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check3">Heart Disease</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check4" value="Obesity" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check4">Obesity</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check5" value="Stroke" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check5">Stroke</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check6" value="Substance Abuse" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check6">Substance Abuse</label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="col-lg-6 mb-4">
+                                                                                                        <div class="form-group">
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check7" value="Asthma" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check7">Asthma</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check8" value="Diabetes" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check8">Diabetes</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check9" value="Hypertension" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check9">Hypertension</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check10" value="Osteoporosis" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check10">Osteoporosis</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check11" value="Mental Disorders" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check11">Mental Disorders</label>
+                                                                                                            </div>
+                                                                                                            <div class="form-check mb-2">
+                                                                                                                <input type="checkbox" class="form-check-input" name="health_conditions[]" id="check12" value="Other" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                <label class="form-check-label" for="check12">Other</label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </section>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <!-- Step 4 -->
+                                                                                    <div class="step" id="step4" style="display: none;">
+                                                                                        <h4>Step 4: Insurance Information</h4>
+                                                                                        <div class="form-group">
+                                                                                            <section class="">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-lg-12 mb-3">
+                                                                                                        <fieldset class="form-group">
+                                                                                                            <div class="insuranceQuestion mb-3 mt-3">
+                                                                                                                <label>Does the patient have insurance?</label>
+                                                                                                                <div class="form-check form-check-inline">
+                                                                                                                    <input class="form-check-input" type="radio" name="has_insurance" id="hasInsuranceYes" value="yes">
+                                                                                                                    <label class="form-check-label" for="hasInsuranceYes">Yes</label>
+                                                                                                                </div>
+                                                                                                                <div class="form-check form-check-inline">
+                                                                                                                    <input class="form-check-input" type="radio" name="has_insurance" id="hasInsuranceNo" value="no">
+                                                                                                                    <label class="form-check-label" for="hasInsuranceNo">No</label>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="row insurance-fields" style="display: none;">
+                                                                                                                <div class="col-lg-12">
+                                                                                                                    <label class="col-form-label pt-0">Type of Insurance:</label>
+                                                                                                                    <div class="form-group">
+                                                                                                                        <div class="row">
+                                                                                                                            <div class="form-check">
+                                                                                                                                <input type="checkbox" name="insurance_type" class="form-check- ml-3" value="PhilHealth" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                                <label class="form-check-label">PhilHealth</label>
+                                                                                                                            </div>
+                                                                                                                            <div class="form-check">
+                                                                                                                                <input type="checkbox" name="insurance_type" class="form-check-input ml-2" value="HMO" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                                <label class="form-check-label">HMO</label>
+                                                                                                                            </div>
+                                                                                                                            <div class="form-check">
+                                                                                                                                <input type="checkbox" name="insurance_type" class="form-check-input ml-2" value="Private Health Insurance" style="border: 1px solid grey; border-radius: 5px;">
+                                                                                                                                <label class="form-check-label">Private Health Insurance</label>
+                                                                                                                            </div>
+                                                                                                                        </div>
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+
+                                                                                                            <div class="row insurance-fields" style="display: none;">
+                                                                                                                <div class="row mt-3 mb-2 px-4">
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="insuranceProvider">Choose Insurance Provider</label>
+                                                                                                                            <select name="insurance_provider" id="primaryInsuranceProvider" class="form-control">
+
+                                                                                                                                <option value="">Select Insurance Provider</option>
+                                                                                                                                <option value="Coco Life">Coco Life</option>
+                                                                                                                                <option value="Pacific Cross">Pacific Cross</option>
+                                                                                                                                <option value="InLife">InLife</option>
+                                                                                                                                <option value="HMI">HMI</option>
+                                                                                                                                <option value="Etiqa">Etiqa</option>
+                                                                                                                                <option value="Generali">Generali</option>
+                                                                                                                                <option value="ValueCare">ValueCare</option>
+                                                                                                                                <option value="PhilCare">PhilCare</option>
+                                                                                                                            </select>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="primaryPolicyholderName">Primary Policyholder's Name</label>
+                                                                                                                            <input type="text" name="primary_policy_holder_name" class="form-control" placeholder="Policyholder's Name" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="groupNumber">Group Number</label>
+                                                                                                                            <input type="text" name="group_number" class="form-control" placeholder="Group Number" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="row mb-3 px-4">
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="primaryPolicyNumber">Primary Policy Number</label>
+                                                                                                                            <input type="text" name="primary_policy_number" class="form-control" placeholder="Policy Number"/>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="effectiveDate">Effective Date</label>
+                                                                                                                            <input type="date" name="effective_date" class="form-control" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="expirationDate">Expiration Date</label>
+                                                                                                                            <input type="date" name="expiration_date" class="form-control" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+
+                                                                                                                </div>
+
+                                                                                                                <div class="row mb-2 px-4">
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="secondaryInsuranceProvider">Secondary Insurance Provider</label>
+                                                                                                                            <input type="text" name="secondary_insurance_provider" class="form-control" placeholder="Insurance Provider" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="secondaryPolicyNumber">Secondary Policy Number</label>
+                                                                                                                            <input type="text" name="secondary_policy_number" class="form-control" placeholder="Policy Number" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-4 mb-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="text-label" for="secondaryPolicyholderName">Secondary Policyholder's Name</label>
+                                                                                                                            <input type="text" name="secondary_policy_holder_name" class="form-control" placeholder="Policyholder's Name" />
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                            </div>
+
+
+
+                                                                                                        </fieldset>
+                                                                                                    </div>
+
+
+                                                                                                </div>
+                                                                                            </section>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- Step 5 -->
+                                                                                    <div class="step" id="step5" style="display: none;">
+                                                                                        <h4>Step 5: Bed Assignment</h4>
+                                                                                        <div class="form-group">
+                                                                                            <section class="">
+                                                                                                <div class="container">
+                                                                                                    <h1>Real-Time Bed Availability</h1>
+                                                                                                    <!-- Dropdown for selecting a bed -->
+                                                                                                    <label for="bed_no">Select Bed Number:</label>
+                                                                                                    <select id="bed_no" name="bed_no" class="form-control">
+                                                                                                        <option value="">-- Select a Bed --</option>
+                                                                                                        {{-- Available Beds --}}
+
+                                                                                                        @foreach($bedsData['available'] as $bed)
+                                                                                                            <option value="{{ $bed['bed_no'] }}"
+                                                                                                                    @if($bed['bed_no'] == $emergency_patient->bed_assignments?->bed_no) selected @endif>
+                                                                                                                Bed No: {{ $bed['bed_no'] }} ({{ $bed['occupancy_status'] }}) - Room No: {{ $bed['room_no'] }}
+                                                                                                            </option>
+                                                                                                        @endforeach
+
+
+                                                                                                        @foreach($bedsData['occupied'] as $bed)
+                                                                                                            <option value="{{ $bed['bed_no'] }}"
+                                                                                                                    @if($bed['bed_no'] == $emergency_patient->bed_assignments?->bed_no) selected @endif
+                                                                                                                    @if($bed['bed_no'] != $emergency_patient->bed_assignments?->bed_no) disabled @endif>
+                                                                                                                Bed No: {{ $bed['bed_no'] }} ({{ $bed['occupancy_status'] }}) - Room No: {{ $bed['room_no'] }}
+                                                                                                            </option>
+                                                                                                        @endforeach
+
+                                                                                                    </select>
+
+                                                                                                </div>
+                                                                                            </section>
+                                                                                        </div>
+                                                                                    </div>
+
+
+
+
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Previous</button>
+                                                                                        <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                                                                                        <button type="submit" class="btn btn-primary" id="submitBtn1" style="display: block;">Register</button>
+                                                                                    </div>
+
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anderson</td>
                                                         <td>Sarra</td>
-                                                        <td>3 - Urgent</span></td>
-                                                        <td></span></td>
+                                                        <td>3</td>
+                                                        <td>4 - Non-urgent</span></td>
                                                         <td>
                                                             <a href="javascript:void()" class="btn btn-square btn-primary mr-4"
                                                                 data-toggle="tooltip" type="button" data-placement="top" title="View"
                                                                 onclick="window.location.href='/admin_med/layout/emergency_view.html'">
                                                                 <i class="fa fa-eye color-muted">View</i> </a>
-                                                            <a href="javascript:void(0)" class="btn btn-square btn-secondary mr-4"
-                                                                data-toggle="tooltip" type="button" data-placement="top" title="Edit"
-                                                                onclick="window.location.href='/admin_med/layout/emergency_edit.html'">
-                                                                <i class="fa fa-pencil color-muted">Edit</i>
-                                                             </a>
-                                                            <a href="javascript:void()" class="btn btn-square btn-danger"
-                                                                data-toggle="tooltip" type="button" data-placement="top" title="Close"><i
-                                                                    class="fa fa-close color-danger">Delete</i></a>
+                                                            <a href="javascript:void(0)" id="assignRoomBtn" class="btn btn-square btn-warning mr-4"
+                                                                data-toggle="modal"
+                                                                data-target="#roomReassignmentModal"
+                                                                data-current-bed="5"
+                                                                data-emergency-patient-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                                onclick="openRoomReassignmentModal(this)"> <!-- Pass 'this' to the function -->
+                                                                <i class="fa fa-bed color-muted">Re-assign</i>
+                                                            </a>
+                                                            <input type="hidden" id="emergencyPatientId" value="">
+                                                            <button type="button" id="registerBtn" class="btn btn-square btn-success"
+                                                            data-toggle="modal" data-target="#patientAdmissionModal"
+                                                            data-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                            data-first-name="{{ $emergency_patient->emergency_first_name }}"
+                                                            data-middle-name="{{ $emergency_patient->emergency_middle_name ?? '' }}"
+                                                            data-last-name="{{ $emergency_patient->emergency_last_name }}"
+                                                            data-extension="{{ $emergency_patient->emergency_extension ?? '' }}"
+                                                            data-date-of-birth="{{ $emergency_patient->emergency_dob }}"
+                                                            data-sex="{{ $emergency_patient->emergency_sex }}"
+                                                            data-civil-status="{{ $emergency_patient->emergency_informations->ep_civil_status ?? '' }}"
+                                                            data-employment="{{ $emergency_patient->emergency_informations->ep_employment ?? '' }}"
+                                                            data-phone="{{ $emergency_patient->emergency_informations->ep_phone ?? '' }}"
+                                                            data-email="{{ $emergency_patient->emergency_informations->ep_email ?? '' }}"
+                                                            data-religion="{{ $emergency_patient->emergency_informations->ep_religion ?? '' }}"
+                                                            data-nationality="{{ $emergency_patient->emergency_informations->ep_nationality ?? '' }}"
+                                                            data-address="{{ $emergency_patient->emergency_informations->ep_full_address ?? '' }}"
+                                                            data-current-bed="{{ $emergency_patient->bed_assignments?->bed_no ?? 'N/A' }}"
+                                                            onclick="openRoomReassignmentModal(this); populateForm(this);"
+                                                            > <i class="fa fa-user-plus color-success"></i>Admit</button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Reyes</td>
+                                                        <td>Jarrell</td>
+                                                        <td>1</td>
+                                                        <td>1 - Resuscitation</span></td>
+                                                        <td>
+                                                            <a href="javascript:void()" class="btn btn-square btn-primary mr-4"
+                                                                data-toggle="tooltip" type="button" data-placement="top" title="View"
+                                                                onclick="window.location.href='/admin_med/layout/emergency_view.html'">
+                                                                <i class="fa fa-eye color-muted">View</i> </a>
+                                                                <a href="javascript:void(0)" id="assignRoomBtn" class="btn btn-square btn-warning mr-4"
+                                                                data-toggle="modal"
+                                                                data-target="#roomReassignmentModal"
+                                                                data-current-bed="5"
+                                                                data-emergency-patient-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                                onclick="openRoomReassignmentModal(this)"> <!-- Pass 'this' to the function -->
+                                                                <i class="fa fa-bed color-muted">Re-assign</i>
+                                                            </a>
+                                                            <input type="hidden" id="emergencyPatientId" value="">
+                                                            <button type="button" id="registerBtn" class="btn btn-square btn-success"
+                                                                data-toggle="modal" data-target="#patientAdmissionModal"
+                                                                data-id="{{ $emergency_patient->emergency_patient_id }}"
+                                                                data-first-name="{{ $emergency_patient->emergency_first_name }}"
+                                                                data-middle-name="{{ $emergency_patient->emergency_middle_name ?? '' }}"
+                                                                data-last-name="{{ $emergency_patient->emergency_last_name }}"
+                                                                data-extension="{{ $emergency_patient->emergency_extension ?? '' }}"
+                                                                data-date-of-birth="{{ $emergency_patient->emergency_dob }}"
+                                                                data-sex="{{ $emergency_patient->emergency_sex }}"
+                                                                data-civil-status="{{ $emergency_patient->emergency_informations->ep_civil_status ?? '' }}"
+                                                                data-employment="{{ $emergency_patient->emergency_informations->ep_employment ?? '' }}"
+                                                                data-phone="{{ $emergency_patient->emergency_informations->ep_phone ?? '' }}"
+                                                                data-email="{{ $emergency_patient->emergency_informations->ep_email ?? '' }}"
+                                                                data-religion="{{ $emergency_patient->emergency_informations->ep_religion ?? '' }}"
+                                                                data-nationality="{{ $emergency_patient->emergency_informations->ep_nationality ?? '' }}"
+                                                                data-address="{{ $emergency_patient->emergency_informations->ep_full_address ?? '' }}"
+                                                                data-current-bed="{{ $emergency_patient->bed_assignments?->bed_no ?? 'N/A' }}"
+                                                                onclick="openRoomReassignmentModal(this); populateForm(this);"
+                                                                > <i class="fa fa-user-plus color-success"></i>Admit</button>
                                                         </td>
                                                     </tr>
         
@@ -646,6 +1314,18 @@
     <!--**********************************
         Scripts
     ***********************************-->
+<script src="/admin_med/js/room_reassignment.js"></script>
+<script src="/admin_med/js/patient_admission.js"></script>
+<link rel="stylesheet" href="/admin_med/css/emergency_registration.css">
+<script src="/admin_med/js/room_assignment.js"></script>
+<link rel="stylesheet" href="/admin_med//css/bed_dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+
+
 <script src="admin_medcss/theme/vendor/global/global.min.js"></script>
 <script src="admin_medcss/theme/js/quixnav-init.js"></script>
 <script src="admin_medcss/theme/js/custom.min.js"></script>
@@ -696,11 +1376,11 @@
 
 <script src="admin_medcss/theme/js/plugins-init/form-pickers-init.js"></script>
 
-<script src="/js/emergency_registration.js"></script>
-<script src="/js/charts_graph.js"></script>
-<script src="/js/charts_mode.js"></script> 
-<script src="/js/charts_reminder.js"></script>
-<script src="/js/charts_vital_color.js"></script>
+<script src="/admin_med/js/emergency_registration.js"></script>
+<script src="/admin_med/js/charts_graph.js"></script>
+<script src="/admin_med/js/charts_mode.js"></script> 
+<script src="/admin_med/js/charts_reminder.js"></script>
+<script src="/admin_med/js/charts_vital_color.js"></script>
 
     <!-- custom script -->
     <script src="form/script.js"></script>

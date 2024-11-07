@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sexSelect = document.querySelector('select[name="emergency_sex"]');
     const firstNameInput = document.querySelector('input[name="emergency_first_name"]');
     const lastNameInput = document.querySelector('input[name="emergency_last_name"]');
-    const messageElement = document.getElementById('sex-selection-message'); // Existing message element
-    const tempIDInput = document.getElementById('patientTemporaryID'); // Temporary ID input field
+    const messageElement = document.getElementById('sex-selection-message'); // New message element
 
     // Initialize counter (for demonstration; should be retrieved from a server/database)
     let doeCounter = 0;
@@ -13,43 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize button state
     updateButtonState();
 
-    // Event listener for the checkbox
     checkbox.addEventListener('change', function () {
-        handleCheckboxChange();
         updateButtonState();
     });
 
-    // Event listener for the Generate ID button
     generateIDBtn.addEventListener('click', () => {
-        // If checkbox is not checked, show "Temporary ID cannot be generated" message
-        if (!checkbox.checked) {
-            messageElement.textContent = "Temporary ID cannot be generated.";
-            messageElement.style.color = "red";
-            messageElement.style.display = "block"; // Ensure message is displayed
-            console.log("Checkbox is unchecked. Displaying message: Temporary ID cannot be generated."); // Debug
-            return;
-        }
-        
-        // Check if a temporary ID already exists
-        if (tempIDInput.value) {
-            messageElement.textContent = "A temporary ID is already generated.";
-            messageElement.style.color = "blue";
-            messageElement.style.display = "block"; // Ensure message is displayed
-            console.log("Temporary ID already exists. Displaying message: A temporary ID is already generated."); // Debug
-            return;
-        }
-    
         // Check if sex is selected before proceeding
         if (!sexSelect.value) {
-            messageElement.textContent = "Please select patient's sex before generating an ID.";
-            messageElement.style.color = "red";
-            messageElement.style.display = "block"; // Ensure visibility
-            console.log("Sex not selected. Displaying message to select sex."); // Debug
+            messageElement.textContent = "Please select patient's sex before generating an ID."; // Show warning message
+            messageElement.style.color = "red"; // Change text color to red
             return; // Stop the function if sex is not selected
         } else {
-            messageElement.textContent = "\u00A0"; // Clear the message if sex is selected
+            messageElement.textContent = ""; // Clear the message if sex is selected
         }
-    
+
         // Set first name based on selected sex
         if (sexSelect.value === 'Male') {
             firstNameInput.value = 'John Doe';
@@ -58,54 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             firstNameInput.value = '';
         }
-    
-        // Fetch a unique ID and set it in the relevant input fields
-        fetch('/generate-unique-id')
-            .then(response => response.json())
-            .then(data => {
-                tempIDInput.value = data.id; // Set the generated ID in the temporary ID input
-                lastNameInput.value = data.id; // Set the value to the last name input
-                messageElement.textContent = "\u00A0"; // Clear any existing message
-                console.log("Generated temporary ID and cleared message."); // Debug
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                messageElement.textContent = "Error generating Temporary ID.";
-                messageElement.style.color = "red";
-                messageElement.style.display = "block"; // Ensure message is visible
-            });
+
     });
 
-    // Function to handle checkbox state changes
-    function handleCheckboxChange() {
-        if (!checkbox.checked) {
-            // Clear Name and Sex fields
-            firstNameInput.value = '';
-            lastNameInput.value = '';
-            sexSelect.value = '';
-
-            // Clear Temporary ID
-            tempIDInput.value = '';
-
-            // Display message indicating ID has been cleared
-            messageElement.textContent = "\u00A0"; // Or any other message if desired
-            messageElement.textContent = "\u00A0";
-        } else {
-            // Optionally, you can add behavior when checkbox is checked
-            messageElement.textContent = "\u00A0";
-            messageElement.textContent = "\u00A0";
-        }
-    }
-
-    // Function to update the Generate ID button state
     function updateButtonState() {
         const isChecked = checkbox.checked;
-        // generateIDBtn.disabled = !isChecked;
+        generateIDBtn.disabled = !isChecked;
         console.log('Checkbox state:', isChecked ? 'Checked' : 'Unchecked');
         console.log('Button disabled state:', generateIDBtn.disabled ? 'Disabled' : 'Enabled');
     }
 });
-
 
 
 
@@ -166,18 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const birthOfDateInput = document.getElementById('birthOfDate');
-    
-    // Get today's date in YYYY-MM-DD format
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-    const day = String(today.getDate()).padStart(2, '0');
-
-    // Set the max attribute to today's date
-    birthOfDateInput.max = `${year}-${month}-${day}`;
-});
 
 function validateBloodPressure() {
     const bpInput = document.getElementById('bloodPressure').value;
@@ -199,15 +125,11 @@ function validateBloodPressure() {
 function validateTemperature() {
     const temperature = document.getElementById('temperature').value;
     const temperatureError = document.getElementById('temperatureError');
-
-    // Regular expression for matching temperature between 24.0 and 45.0
-    const tempPattern = /^(2[4-9](\.\d)?|3[0-9](\.\d)?|4[0-5](\.\d)?)$/;
+    const tempPattern = /^([3-4][0-9]\.\d{1})$/;
 
     if (!tempPattern.test(temperature)) {
-        // If input doesn't match, show error message
         temperatureError.style.display = 'block';
     } else {
-        // Hide the error message if input is valid
         temperatureError.style.display = 'none';
     }
 }
@@ -215,15 +137,11 @@ function validateTemperature() {
 function validateHeartRate() {
     const heartRate = document.getElementById('heartRate').value;
     const heartRateError = document.getElementById('heartRateError');
-
-    // Regular expression for matching heart rate between 60 and 100 (inclusive)
-    const hrPattern = /^(6[0-9]|[7-9][0-9]|100)$/;
+    const hrPattern = /^([4-9]\d|\d{3})$/;
 
     if (!hrPattern.test(heartRate)) {
-        // If input doesn't match, show error message
         heartRateError.style.display = 'block';
     } else {
-        // Hide the error message if input is valid
         heartRateError.style.display = 'none';
     }
 }
@@ -231,15 +149,11 @@ function validateHeartRate() {
 function validatePulseRate() {
     const pulseRate = document.getElementById('pulseRate').value;
     const pulseRateError = document.getElementById('pulseRateError');
-
-    // Regular expression for matching pulse rate between 60 and 100 (inclusive)
-    const prPattern = /^(6[0-9]|[7-9][0-9]|100)$/;
+    const prPattern = /^([4-9]\d|\d{3})$/;
 
     if (!prPattern.test(pulseRate)) {
-        // If input doesn't match, show error message
         pulseRateError.style.display = 'block';
     } else {
-        // Hide the error message if input is valid
         pulseRateError.style.display = 'none';
     }
 }
@@ -247,15 +161,11 @@ function validatePulseRate() {
 function validateRespirationRate() {
     const respirationRate = document.getElementById('respirationRate').value;
     const respirationRateError = document.getElementById('respirationRateError');
-
-    // Regular expression for matching respiration rate between 12 and 20 (inclusive)
-    const rrPattern = /^(1[2-9]|20)$/;
+    const rrPattern = /^([1-2]\d)$/;
 
     if (!rrPattern.test(respirationRate)) {
-        // If input doesn't match, show error message
         respirationRateError.style.display = 'block';
     } else {
-        // Hide the error message if input is valid
         respirationRateError.style.display = 'none';
     }
 }

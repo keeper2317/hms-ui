@@ -24,7 +24,7 @@
 }
 
 .content-body {
-    margin-left: 17.1875rem;
+    // margin-left: 17.1875rem;
     z-index: 0;
     transition: all .2s ease;
     @include custommq($min: 1200px, $max: 1350px) {
@@ -37,7 +37,7 @@
 // Sidebar
 //////////////
 .quixnav {
-    width: 17.1875rem;
+    // width: 17.1875rem;
     padding-bottom: 112px;
     height: 100%;
     position: absolute;

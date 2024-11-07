@@ -1,51 +1,58 @@
-.card{
+.input-header{
+    font-weight: bold;
+}
+
+
+
+
+.card-input {
     margin-top: -1%;  
-    
+    border: 1px solid transparent; /* Remove solid border */
+    box-shadow: 0 0 15px 5px rgba(0, 128, 0, 0.5); /* Greenish splashed border */
+    border-radius: 10px; /* Optional, for softer edges */
 }
 
-.tooltip {
-    display: none; /* Hidden by default */
-    position: absolute; /* Positioning */
-    background-color: #fff; /* Background color */
-    border: 1px solid #ccc; /* Border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px; /* Padding */
-    z-index: 10; /* Ensure it appears above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+.card-input-blue {
+    border: 1px solid transparent; /* Remove solid border */
+    box-shadow: 0 0 15px 5px #083464; 
+    border-radius: 10px; /* Optional, for softer edges */
 }
 
-/* Label styling */
-.normal-ranges-label {
-    cursor: pointer; /* Pointer cursor */
-    color: blue; /* Label color */
-    text-decoration: underline; /* Underline the label */
-}
-
-.normal-ranges-label:hover {
-    color: darkblue; /* Darken on hover */
+.card-input-green {
+    border: 1px solid transparent; /* Remove solid border */
+    box-shadow: 0 0 15px 5px  rgba(0, 128, 0, 0.5);/* Greenish splashed border */
+    border-radius: 10px; /* Optional, for softer edges */
 }
 
 
-.id-and-date-text {
+.card-input-yellow {
+    border: 1px solid transparent; /* Remove solid border */
+    box-shadow: 0 0 15px 5px  rgba(213, 248, 18, 0.5);/* Greenish splashed border */ 
+    border-radius: 10px; /* Optional, for softer edges */
+}
+
+
+
+.id-and-date-text, .date-and-time-text {
     margin-top: 5px;
     display: flex;
     align-items: center;
     text-align: left;
 }
 
-.id-and-date-label {
+.id-and-date-label, .date-and-time-label {
     margin-bottom: 5px;
     display: block; 
     text-align: left; 
 }
 
-.id-and-date-input {
+.id-and-date-input, .date-and-time-input{
 
     margin-top: -7px;
     margin-bottom: 7px;
 }
 
-.id-input, .date-input {
+.id-input, .date-input, .time-input{
     width: 100%; 
     height: 33px;
     margin-top: 5px;
@@ -54,7 +61,7 @@
 }
 
 
-.bp-text, .hr-text, .pr-text, .temp-text, .o2-text, .pain-scale-text, .weight-text, .height-text, .bmi-text, .resp-rate-text, .resp-pattern-text, .remarks-text{
+.diagnosis-text, .treatment-text, .surgeries-text, .medication-text, .assessment-text, .bp-text, .hr-text, .pr-text, .temp-text, .o2-text, .pain-scale-text, .weight-text, .height-text, .bmi-text, .resp-rate-text, .resp-pattern-text, .remarks-text{
     margin-top: 2px;
     display: flex;
     justify-content: space-between;
@@ -69,7 +76,7 @@
     margin-bottom: 4px;
 }
 
-.remarks-input {
+.diagnosis-input, .treatment-input, .surgeries-input, .medication-input, .assessment-input,.remarks-input, .assessment-input {
     margin-top: -3px;
     height: 100px;
     width: 100%;
@@ -90,41 +97,223 @@ table {
     width: 100%; 
 }
 
-.table-left {
+.chart-tab-table-left, .medical-history-table {
     width: 100%;
     border-collapse: collapse; 
     table-layout: auto; 
 }
 
-.vital-signs-header th, 
-.vital-signs-table-body td {
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 25px;
+    margin-left: 10px; 
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 5px;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.slider-text{
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before{
+    transform: translateX(30px);
+}
+
+
+.reminder-settings{
+    margin-top: 10px;
+}
+
+.toggle-container{
+    display: inline-flex;
+    align-items: center;
+}
+
+#manualReminder{
+    display:inline-flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#manualMinutes {
+    width: 100px;
+}
+
+
+
+
+
+.view-logs-label {
+    cursor: pointer; /* Pointer cursor */
+    color: blue; /* Label color */
+    text-decoration: underline; /* Underline the label */
+}
+
+/* Table styling */
+#vitalSignsTable, #medicalHistoryTable {
+    width: 100%; /* Ensure the table takes full width */
+    table-layout: auto; /* Allow the table to adjust based on content */
+}
+
+/* Optional: Add some styling for the logs section */
+
+
+.chart-tab-header th, .chart-tab-table-body td, 
+.medical-history-header th, .medical-history-table-body{
     padding: 8px 12px; 
     margin: 0; 
     text-align: left; 
+    white-space: nowrap;
 }
 
-.vital-signs-header th {
+/* Main assessment summary with truncation */
+.assessment-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em; /* Enough space for 2 lines */
+    line-height: 1.5em; /* Set line height */
+    word-break: break-word;
+    white-space: normal; /* Allow wrapping for extra text */
+}
+
+/* Extra text displayed underneath */
+.extra-text {
+    display: none; /* Hidden by default */
+    color: #666; /* Different color for distinction */
+    margin-top: 5px; /* Small space between main text and extra text */
+}
+
+.show-extra .extra-text {
+    display: block; /* Show when toggled */
+}
+
+.chart-tab-header th, .medical-history-header th{
     background-color: #f5f5f5; 
     font-weight: bold;
     color: black;
     cursor: pointer;
 }
 
-.vital-signs-table-body td {
+.chart-tab-table-body td, .medical-history-table-body td{
     border-bottom: 7px solid white;
-    padding-bottom: -3px;
+   
 }
 
-.vital-signs-header th, 
-.vital-signs-table-body td {
-    white-space: nowrap;
-}
-
-.vital-signs-header th:hover {
+.chart-tab-header th:hover, .medical-history-header th:hover {
     background-color: #f1f1f1; /* Change background color on hover */
 }
 
+.vital-sign-normal{
+    background-color: #d4edda !important;
+    color: #155724 !important;
+
+}
+
+.vital-sign-critical{
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+}
 
 
+#mainDiv {
+    transition: width 5.0s ease; /* Smooth transition for mainDiv width */
+}
 
+.custom-input, .custom-vital, .custom-assessment, .custom-diagnosis, .custom-treatment {
+    transition: width 1s ease, opacity 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+    width: 33.33%; /* Equivalent to col-xl-4 */
+}
 
+.custom-table, .custom-vital-table, .custom-assessment-table, .custom-diagnosis-table, .custom-treatment-table {
+    transition: width 1s ease;
+}
+
+/* Collapsed sidebar styling */
+.custom-input.collapsed, .custom-vital.collapsed, .custom-assessment.collapsed, .custom-diagnosis.collapse, .custom-treatment.collapse{
+    width: 0;
+    opacity: 0;
+    visibility: hidden; /* Fully hides sidebar after transition */
+    overflow: hidden;
+}
+
+.tooltip-label {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    margin-left: 5px;
+}
+
+.tooltip-content {
+    display: none; /* Hide tooltip by default */
+    background-color: #333;
+    position: absolute;
+    margin-left: -160px;
+   
+    margin-top: -400;
+
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 2000;
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: opacity 0.2s ease; /* Smooth appearance */
+    opacity: 0; /* Start as transparent */
+    text-align: left;
+}
+
+.tooltip-content.show {
+    display: block; /* Show when activated */
+    opacity: 1; /* Make fully visible */
+}
+
+.tooltip-content ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tooltip-content li {
+    margin: 5px 0;
+}

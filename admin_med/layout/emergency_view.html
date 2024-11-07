@@ -4,7 +4,7 @@
 
 <head>
    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2.0, user-scalable=1">
 <meta name="HandheldFriendly" content="true" />
@@ -57,9 +57,132 @@
 <!-- Vanilla Datepicker -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/css/datepicker.min.css">
 
-<link rel="stylesheet" href="/css/emergency_registration.css">
+<link rel="stylesheet" href="/admin_med/css/emergency_registration.css">
+
+<link rel="stylesheet" href="/admin_med/css/vitalsigns.css">
+<link rel="stylesheet" href="/admin_med/css/logs.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/admin_med/js/tooltips.js"></script>
+
+<script src="/admin_med/js/patient_charts.js"></script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<script src="/admin_med/js/data_validation.js"></script>
+
+
+
+<link rel="stylesheet" href="/admin_med/css/vitalsigns.css">
+<link rel="stylesheet" href="/admin_med/css/logs.css">
+<script src="/admin_med/js/patient_charts.js"></script>
+
+<script src="/admin_med/js/charts_graph.js"></script>
+<script src="/admin_med/js/charts_reminder.js"></script>
+<script src="/admin_med/js/charts_vital_colors.js"></script>
+
+<script src="/admin_med/js/history_mode.js"></script>
+<script src="/admin_med/js/review_mode.js"></script>
+<script src="/admin_med/js/assessment_mode.js"></script>
+<script src="/admin_med/js/treatment_mode.js"></script>
+<script src="/admin_med/js/medication_log.js"></script>
+
+
+
+<script src="/admin_med/js/data_validation.js"></script>
+<link rel="stylesheet" href="/admin_med/css/diagnosis_input.css">
+<script src="/admin_med/js/diagnosis_input.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+<style>
+    /* Main Navigation styling */
+.main-navigation {
+    background-color: white;
+    padding: 3px 8px; /* Reduce padding for less height */
+    margin-left: -17.1875rem;
+}
+
+.new-header-navigation{
+    margin-bottom: 17rem;
+}
+
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Align the links horizontally */
+    justify-content: flex-start; /* Align the items to the left */
+    gap: 20px; /* Add space between the navigation items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li {
+    position: relative; /* Required for dropdowns */
+    padding: 0; /* Remove any padding from list items */
+    margin: 0; /* Remove margin if present */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #003263; /* Text color */
+    padding: 3px 8px; /* Add padding to make the clickable area larger */
+    display: inline-flex; /* Ensure the icon and text are aligned */
+    align-items: center; /* Vertically align the icon and text */
+    border-radius: 5px; /* Slight rounding for aesthetics */
+    font-size: 11px;
+}
+
+.nav-links a:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Dropdown menu */
+.nav-links li ul.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position dropdown relative to the parent */
+    top: 100%; /* Align dropdown directly under the parent link */
+    left: 0; /* Align dropdown to the left */
+    background-color: #fff; /* White background for dropdown */
+    list-style: none; /* Remove bullets from dropdown */
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
+}
+
+.nav-links li ul.dropdown li {
+    width: 180px; /* Set a fixed width for the dropdown items */
+}
+
+.nav-links li ul.dropdown a {
+    padding: 10px 20px; /* Add padding to dropdown links */
+    display: block; /* Make the dropdown links full-width */
+}
+
+.nav-links li ul.dropdown a:hover {
+    background-color: #f0f0f0; /* Highlight dropdown item on hover */
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover ul.dropdown {
+    display: block; /* Display dropdown when hovering over parent */
+}
+
+</style>
 </head>
 
 <body>
@@ -93,12 +216,6 @@
                 <img class="logo-compact" src="/images/syncore-text.png" alt="">
                 <img class="brand-title" src="/images/syncore-text.png" alt="">
             </a>
-        
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
         </div>
         <!--**********************************
             Nav header end
@@ -111,69 +228,37 @@
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
+                        <!-- Left side (brand, logo, etc.) can go here -->
                         <div class="header-left"></div>
         
+                        <!-- Right side (notifications, profile dropdown, etc.) -->
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" id="notificationToggle">
                                     <i class="mdi mdi-bell"></i>
                                     <div class="pulse-css"></div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
+                                    <ul class="list-unstyled" id="notification-list">
+                                       
+                                        <li class="media dropdown-item notification-item"
+                                            id="notification-{{ $notification->notification_id }}"
+                                            data-id="{{ $notification->notification_id }}">
+                                            <span class="success"><i class="ti-check"></i></span>
                                             <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
+                                                <p>
+                                                    <strong></strong>
+                                                    
+                                                </p>
                                             </div>
-                                            <span class="notify-time">3:20 am</span>
+                                            <span class="notify-time"></span>
                                         </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
+                                  
                                     </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
+        
+                                    <a class="all-notification" href="{{ route('notifications.allNotifications') }}">
+                                        See all notifications <i class="ti-arrow-right"></i>
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown header-profile">
@@ -190,10 +275,11 @@
                                         <span class="ml-2">Inbox </span>
                                     </a>
                                     <form action="/logout" method="POST">
-                                        <a class="dropdown-item block py-2 pr-5 pl-4">
+                                        
+                                        <button type="submit" class="dropdown-item block py-2 pr-5 pl-4 bg-transparent border-0">
                                             <i class="icon-key"></i>
-                                            <span class="ml-2">Logout </span>
-                                        </a>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
                                     </form>
                                 </div>
                             </li>
@@ -201,68 +287,34 @@
                     </div>
                 </nav>
             </div>
+            <div class="new-header-navigation">
+                <nav class="main-navigation">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="mdi mdi-home mdi-24px"></i> Home</a></li>
+                    <li><a href="#"><i class="mdi mdi-calendar mdi-24px"></i> Calendar</a></li>
+                    <li>
+                        <a href="#"><i class="mdi mdi-folder-outline mdi-24px"></i> Records</a>
+                        <ul class="dropdown">
+                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
+                            <li><a href="/patient/index">In-Patients</a></li>
+                            <li><a href="javascript:void()">Out-Patients</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="mdi mdi-monitor mdi-24px"></i> Transactions</a></li>
+                </ul>
+                </nav>
+            </div>
+        
         </div>
         
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="quixnav">
-            <div class="quixnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Dashboard</li>
-                    <li>
-                        <a href="{{ url('') }}" aria-expanded="false">
-                            <i class="mdi mdi-home mdi-24px"></i>
-                            <span class="nav-text">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="calendar" aria-expanded="false">
-                            <i class="mdi mdi-calendar mdi-24px"></i>
-                            <span class="nav-text">Calendar</span>
-                        </a>
-                    </li>
-                    <li class="nav-label">Patient</li>
-                    <li>
-                        <a href="overall_records" aria-expanded="false">
-                            <i class="icon icon-single-04"></i>
-                            <span class="nav-text">Overview</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="records" aria-expanded="false">
-                            <i class="mdi mdi-folder-outline mdi-24px"></i>
-                            <span class="nav-text">Records</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
-                            <li><a href="inpatient_records" aria-expanded="false">In-Patients</a>
-                            </li>
-                            <li><a href="javascript:void()">Out-Patients</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Transactions</li>
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="mdi mdi-monitor mdi-24px"></i>
-                            <span class="nav-text">Transactions</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
         
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+        <div class="content-body mt-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -295,26 +347,32 @@
                                     </li>
     
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#diagnosisAndProcedure">Diagnosis and Procedure</a>
+                                        <a class="nav-link" data-toggle="tab" href="#medicalHistory" role="tab">Medical History</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#doctorsAssessment" role="tab">Assessment</a>
                                     </li>
     
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#doctorsOrder">Doctor's Order</a>
+                                        <a class="nav-link" data-toggle="tab" href="#diagnosisAndProcedure" role="tab">Doctors Diagnosis</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#nursesNotes">Nurse's Notes</a>
+                                        <a class="nav-link" data-toggle="tab" href="#treatmentPlan" role="tab">Treatment Plan</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#intakeAndOutput">Intake & Output</a>
+                                        <a class="nav-link" data-toggle="tab" href="#medicationLog" role="tab">Medication Log</a>
                                     </li>
+    
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#medicationLog">Medication Log</a>
+                                        <a class="nav-link" data-toggle="tab" href="#careActivityHistory" role="tab">Care Activity</a>
                                     </li>
+    
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#ivFluid">IV Fluid</a>
+                                        <a class="nav-link" data-toggle="tab" href="#dischargeSummary" role="tab">Discharge</a>
                                     </li>
+                                    
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#charges">Charges</a>
+                                        <a class="nav-link" data-toggle="tab" href="#charges" role="tab">Charges</a>
                                     </li>
     
     
@@ -405,43 +463,47 @@
     
                                     <!-- Vital Signs Tab -->
                                     <div class="tab-pane fade" id="vitalSigns">
-                                        <link rel="stylesheet" href="/css/vitalsigns.css">
-                                        <script src="/js/patient_charts.js"></script>
                                         <div>
+                                            <button class="btn btn-outline-primary" onclick="vitalSignToggleDivs()">Toggle View</button>
                                             <div>
-
-                                                <div class="row justify-content-center my-4">
-                                                    <div class="col-lg-12">
-                                                        <div class="row align-items-center ">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                                 <div class="row grid">
-                                                    <div class="col-xl-4 col-xxl-12">
-                                                        <div class="card-input">
-
+                                                    <div id="vitalDiv" class="custom-vital col-xl-4 col-xxl-12">
+                                                        <div class="card-input card-input-green">
+                                                          
 
                                                             <div class="card-header">
-                                                                <h4 class="input-header" id="inputHeader">Input Mode</h4>
+                                                                <h4 class="input-header" id="inputHeader">
+                                                                    Input Mode
+                                                                </h4>
                                                             </div>
-                                                            <!-- Card body for vital signs input-->
-                                                            
                                                             <div class="card-body">
 
-
-                                                                
-
-
-                                                                <form action="/emergency/vital-signs/store" id="vitalSignsForm" class="step-form-horizontal" method="POST" onsubmit="">
-                                                                @csrf
+                                                                <div>
+                                                                    <span class="tooltip-label">Normal Ranges</span>
+                                                                    <div class="tooltip-content">
+                                                                        <ul>
+                                                                            <li>BP: Normal BP: 90/60 to 120/80 mmHg </li>
+                                                                            <li>HR: Normal HR: 60 to 100 bpm</li>
+                                                                            <li>PR: Normal PR: 60 to 100 bpm</li>
+                                                                            <li>Temp: Normal Temp: 36.1 to 37.2 °C</li>
+                                                                            <li>O2: Normal O2Sat: 95% to 100%</li>
+                                                                            <li>Pain Scale: Pain Scale: 0 (no pain) to 10 (worst pain)</li>
+                                                                            <li>Resp Rate: Normal Resp Rate: 12 to 20 breaths/min</li>
+                                                                            <li>BMI: Normal BMI: 18.5 to 24.9</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div id="tooltip" class="tooltip-content"></div>
+                                                            
+                                                                <form action="{{ isset($vital_sign) ? route('vital_signs.vital_signs_update', $vital_sign->vital_signs_id) : '/emergency/vital-signs/store' }}" id="vitalSignsForm" class="step-form-horizontal" method="POST" onsubmit="">
+                                                             
                                                                 <!-- Id and Date Section -->
                                                                 <div class="id-and-date">
-
+                                                            
                                                                     <!-- Id and Date Section Text -->
                                                                     <div class="row id-and-date-text">
-
+                                                            
                                                                         <div class="col-md-6">
                                                                             <h5 class="id-and-date-label">Date</h5>
                                                                         </div>
@@ -450,29 +512,28 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of Id and Date Section Text -->
-
+                                                            
                                                                     <!-- Id and Date Section Input -->
                                                                     <div class="row id-and-date-input">
-
                                                                         <div class="col-md-6">
-                                                                            <input type="date" name="diagnosis_date" id="datetime-input" class="form-control date-input">
+                                                                            <input type="date" name="diagnosis_date" id="diagnosis-date-input" class="form-control date-input datetime-input">
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <input type="time" name="diagnosis_time" id="datetime-input-time" class="form-control date-input">
+                                                                            <input type="time" name="diagnosis_time" id="diagnosis-time-input" class="form-control time-input datetime-input">
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of Id and Date Section Input -->
-
+                                                            
                                                                 </div>
-
+                                                            
                                                                 <!-- BP HR and PR -->
                                                                 <div class="bp-hr-pr">
-
+                                                            
                                                                     <!-- BP HR and PR Section Text -->
                                                                     <div class="row bp-hr-pr-text">
                                                                         <div class="col-md-4">
                                                                             <h5 class="bp-text">BP<span class="form-required text-danger">*</span></h5>
-                                                                            
+                                                            
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <h5 class="hr-text">HR</h5>
@@ -482,7 +543,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of BP HR and PR Section Text -->
-
+                                                            
                                                                     <!-- BP HR and PR Section Input -->
                                                                     <div class="row vital-signs-input">
                                                                         <div class="col-md-4">
@@ -499,10 +560,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of BP HR and PR Section Input -->
-
+                                                            
                                                                 </div>
                                                                 <!-- End of BP HR and PR -->
-
+                                                            
                                                                 <!-- Temp, O2Sat, Pain Scale -->
                                                                 <div class="bp-hr-pr">
                                                                     <!-- Temp, O2Sat, Pain Scale Section Text -->
@@ -518,7 +579,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of Temp, O2Sat, Pain Scale Section Text -->
-
+                                                            
                                                                     <!-- Temp, O2Sat, Pain Scale Section Input -->
                                                                     <div class="row temp-o2,ps-input">
                                                                         <div class="col-md-4">
@@ -535,10 +596,10 @@
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of Temp, O2Sat, Pain Scale Section Input -->
-
+                                                            
                                                                 </div>
                                                                 <!-- End of Temp, O2Sat, Pain Scale -->
-
+                                                            
                                                                 <!-- Resp Rate, Resp Pattern -->
                                                                 <div class="resprate-resppatt">
                                                                     <!-- Resp Rate, Resp Pattern Text -->
@@ -566,13 +627,13 @@
                                                                                 <option value="Apnea">
                                                                                 <option value="Hyperventilation">
                                                                             </datalist>
-
+                                                            
                                                                         </div>
                                                                     </div>
                                                                     <!-- End of Resp Rate, Resp Pattern Input -->
                                                                 </div>
                                                                 <!-- End of Resp Rate, Resp Pattern -->
-
+                                                            
                                                                 <!-- weight, height,bmi -->
                                                                 <div class="bp-hr-pr">
                                                                     <!-- weight, height,bmi Text -->
@@ -606,7 +667,7 @@
                                                                     <!-- End of weight, height,bmi Input -->
                                                                 </div>
                                                                 <!-- End of weight, height,bmi -->
-
+                                                            
                                                                 <!-- Remarks Pattern -->
                                                                 <div class="vital-signs-remarks">
                                                                     <!-- Remarks Text -->
@@ -623,44 +684,46 @@
                                                                     <!-- End of Remarks Input -->
                                                                 </div>
                                                                 <!--End of Remarks Pattern -->
+                                                            
                                                                 <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
-
-                                                        
-
+                                                            
+                                                            
+                                                            
                                                                 <!-- Footer Buttons -->
                                                                 <div class="card-footer d-flex justify-content-end">
+                                                             
                                                                     <!-- Back to Input Mode Button (Initially Hidden) -->
                                                                     <button type="button" class="btn btn-secondary" id="backToInputButton" style="display: none;" onclick="showInputMode();">Back to Input Mode</button>
-
+                                                            
                                                                     <button type="button" id="cancel-btn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Clear</button>
-
-                                                                    
+                                                            
                                                                     <button type="submit" class="btn btn-primary ms-3" id="editSubmit" style="display: none;" onclick="showSaveAlert(); return false;">
                                                                         Save Changes
                                                                     </button>
-                                                                    
+                                                            
                                                                     <button type="submit" id="save-btn" class="btn btn-primary ms-3">Save</button>
-
-
+                                                            
                                                                 </div>
                                                             </div>
                                                             </form>
-                                                            <!-- End of card body for vital signs input-->
-
+                                                          
 
                                                         </div>
                                                     </div>
 
+                                                
                                                     <!-- Table in the left side -->
-                                                    <div class="col-xl-8 col-xxl-12">
+                                                
+                                                    <div id="vitalMainDiv" class="custom-vital-table col-xl-8 col-xxl-12">
+                                                
                                                         <div class="card">
-
                                                             <div class="card-header">
                                                                 <h4 class="card-title">Patient's Vital Signs</h4>
 
+                                                                
                                                                 <div class="reminder-settings d-flex align-items-center">
                                                                     <div class="toggle-container">
-                                                                        <label for="reminderToggle">Reminder Mode:</label>
+                                                                        <label for="reminderToggle">Reminder:</label>
                                                                         <label class="switch">
                                                                             <input type="checkbox" id="reminderToggle" checked>
                                                                             <span class="slider ">
@@ -669,21 +732,28 @@
                                                                         </label>
                                                                     </div>
 
+
                                                                     <div id="manualReminder" class="ms-3">
                                                                         <input type="number" id="manualMinutes" class="form-control" placeholder="Enter minutes" min="1" disabled>
                                                                     </div>
                                                                 </div>
-                                                
+                                                               
+
                                                             </div>
-                                                        
+
                                                             <div class="card-body">
-                                                                <div class="basic-form">
-                                                                
-                                                                    <table class="table-left" id="vitalSignsTable" data-sort-dir="asc">
-                                                                        <thead class="vital-signs-table-header">
-                                                                            <tr class="vital-signs-header">
-                                                                                <!-- Clickable headers for sorting -->
-                                                                                <th onclick="sortTable(0)">DiagnosisDate &#x25B2;&#x25BC;</th>
+                                                                <div id="logsSection" style="display: none;">
+                                                                    <h5>Activity Logs</h5>
+                                                                    <ul id="logEntries">
+                                                                       
+                                                                    </ul>
+                                                                </div>
+
+                                                                <div id="vitalSignsTableContainer">
+                                                                    <table class="chart-tab-table-left" id="vitalSignsTable">
+                                                                        <thead class="chart-tab-table-header">
+                                                                            <tr class="chart-tab-header">
+                                                                                <th onclick="sortTable(0)">Diagnosis Date &#x25B2;&#x25BC;</th>
                                                                                 <th>BP</th>
                                                                                 <th>HR</th>
                                                                                 <th>Temp</th>
@@ -694,136 +764,1165 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                            
-                                                                            <tr class="vital-signs-table-body">
-                                                                                <td>10/8/2023, 4:30:57 PM</td>
-                                                                                <td>110/30</td>
-                                                                                <td>65</td>
-                                                                                <td>36.5</td>
-                                                                                <td>98%</td>
-                                                                                <td>2/10</td>
-                                                                                <td>18</td>
+                                                                            <tr class="chart-tab-table-body">
+                                                                                <td>07/11/2024</td>
+                                                                                <td>120/70</td>
+                                                                                <td>100</td>
+                                                                                <td>36</td>
+                                                                                <td>100</td>
+                                                                                <td>10</td>
+                                                                                <td>20</td>
                                                                                 <td>
                                                                                     <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
                                                                                         data-toggle="tooltip" type="button" data-placement="top" title="View"
                                                                                         onclick="makeFormReadonly();">
                                                                                         <i class="fa fa-eye color-muted">View</i>
                                                                                     </a>
-
+                                                                                   
                                                                                     <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
                                                                                         data-toggle="tooltip" type="button" data-placement="top" title="Edit"
                                                                                         onclick="enterEditMode();">
                                                                                         <i class="fa fa-pencil color-muted">Edit</i>
                                                                                     </a>
-                                                                                    
-                                                                                </td>
-                                                                            </tr> 
-                                        
-                                                                            <tr class="vital-signs-table-body">
-                                                                                <td>10/8/2024, 4:30:57 PM</td>
-                                                                                <td>120/80</td>
-                                                                                <td>75</td>
-                                                                                <td>36.5</td>
-                                                                                <td>98%</td>
-                                                                                <td>2/10</td>
-                                                                                <td>18</td>
-                                                                                <td>
-                                                                                    <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
-                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="View"
-                                                                                        onclick="makeFormReadonly();">
-                                                                                        <i class="fa fa-eye color-muted">View</i>
-                                                                                    </a>
-
-                                                                                    <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
-                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="Edit"
-                                                                                        onclick="enterEditMode();">
-                                                                                        <i class="fa fa-pencil color-muted">Edit</i>
-                                                                                    </a>
-                                                                                    
+                                                                                   
                                                                                 </td>
                                                                             </tr>
-                                                                            <!-- Additional rows here -->
+                                                                        </tbody>
                                                                     </table>
                                                                 </div>
-                                                                <canvas id="vitalSignsChart" style="display: none;"></canvas>
+                                                                <div id="vitalSignsChartContainer" style="display: none;">
+                                                                    <div class="row" style="display: flex; gap: 40px;">
+                                                                        <canvas id="bpChart" width="430" height="300"></canvas>
+                                                                        <canvas id="hrChart" width="430" height="300"></canvas>
+                                                                    
+                                                                    </div>
+                                                                    <canvas id="tempChart" width="430" height="300"></canvas>
+                                                                    
+
+                                                                </div>
+
+
                                                             </div>
 
-                                                            <!-- End of Table card body -->
-                                                            <div class="card-footer d-flex justify-content-end">
-                                                                <button type="button" id="viewGraph-btn" class="btn btn-secondary btn view-graph" data-dismiss="modal">View Graph</button>
-                                                                <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
-                                                            </div>
+                                                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                    <label class="view-logs-label" id="viewLogs" for="tooltip" onclick="toggleLogs()">
+                                                                        <strong>View Logs</strong>
+                                                                    </label>
+                                                                </div>
 
+                                                                <div>
+                                                                    <button type="button" id="viewGraphButton" class="btn btn-secondary" onclick="viewGraph()">View Graph</button>
+                                                                    <button type="button" id="viewTableButton" class="btn btn-secondary" style="display: none;" onclick="viewTable()">View Table</button>
+                                                                    <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
                                                     </div>
+
                                                     <!-- End of Table in the left side -->
 
                                                 </div>
 
                                             </div>
                                         </div>
+                                    </div>
+    
+                
+    
+    
+    
+                                    <div class="tab-pane fade" id="medicalHistory">
+                                        <div class="pt-4">
+                                            <div>
+                                                <button class="btn btn-outline-primary" onclick="historyToggleDivs()">Toggle View</button>
+                                                <div>
+                                                    <div class="row grid">
+                                                        <div id="historyDiv" class="custom-input col-xl-4 col-xxl-12">
+                
+                                                            <div class="history-card-input card-input-green">
+                                                                <div class="card-header">
+                                                                    <h4 class="input-header" id="historyInputHeader">Input Mode</h4>
+                                                                </div>
+                                                                
+                                                                <div class="card-body">
 
-    
-    
-                                    </div>
-                                    <!-- End of Vital Signs Tab -->
-    
-                                    <div class="tab-pane fade" id="diagnosisAndProcedure">
-                                        <div class="pt-4">
-    
-    
+
+                                                                    <form action="{{ isset($ep_medical_history) ? route('ep_medical_history.ep_medical_history_update', $ep_medical_history->ep_medical_history_id) : '/emergency/ep-medical-history/store' }}" id="epHistoryForm" method="POST" onsubmit="">
+                                                                   
+                                                        
+                                                                    <!-- Id and Date Section -->
+                                                                    <div class="id-and-date">
+                                                                
+                                                                        <!-- Id and Date Section Text -->
+                                                                        <div class="row id-and-date-text">
+                                                                
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Date</h5>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Time</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Text -->
+                                                                
+                                                                        <!-- Id and Date Section Input -->
+                                                                        <div class="row id-and-date-input">
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="ep_medical_history_date" id="history-date-input" class="form-control date-input datetime-input">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="time" name="ep_medical_history_time" id="history-time-input" class="form-control time-input datetime-input">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Input -->
+                                                                
+                                                                    </div>
+                                                                
+                                                                
+                                                                
+                                                                    <div class="diagnosis-remarks">
+                                                                        <div class="col-md-4">
+                                                                            <h5 class="diagnosis-text">Diagnosis</h5>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea name="ep_medical_history_diagnosis" id="diagnosisInput" class="diagnosis-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="treatment-remarks">
+                                                                        <div class="col-md-4">
+                                                                            <h5 class="treatment-text">Treatment</h5>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea name="ep_medical_history_treatment" id="treatmentInput" class="treatment-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="surgeries-remarks">
+                                                                        <div class="col-md-4">
+                                                                            <h5 class="surgeries-text">Surgeries</h5>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea name="ep_medical_history_surgery" id="surgeriesInput" class="surgeries-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="medication-remarks">
+                                                                        <div class="col-md-4">
+                                                                            <h5 class="medication-text">Medications</h5>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea name="ep_medical_history_medications" id="medicationInput" class="medication-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
+                                                                
+                                                                
+                                                                    <!-- Footer Buttons -->
+                                                                    <div class="card-footer d-flex justify-content-end">
+                                                                     
+                                                                
+                                                                        <!-- ASDASDASDASD -->
+                                                                
+                                                                        <button type="button" class="btn btn-secondary" id="backToInputButtonHistory" style="display: none;" onclick="showHistoryInputMode();">Back to Input Mode</button>
+                                                                
+                                                                        <button type="button" id="historyCancelBtn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Clear</button>
+                                                                
+                                                                        <button type="submit" class="btn btn-primary ms-3" id="editSubmitHistory" style="display: none;" onclick="showHistorySaveAlert(); return false;">
+                                                                            Save Changes
+                                                                        </button>
+                                                                
+                                                                        <button type="submit" id="historySaveBtn" class="btn btn-primary ms-3">Save</button>
+
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+                                                                
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- Table in the left side -->
+                                                        <div id="mainDiv" class="custom-table col-xl-8 col-xxl-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Patient's Medical History</h4>
+                                                                </div>
+
+                                                                <div class="card-body">
+                                                                    <div id="historyLogsSection" style="display: none;">
+                                                                        <h5>Activity Logs</h5>
+                                                                        <ul id="logEntries">
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div id="historyTableContainer">
+                                                                        <table class="chart-tab-table-left" id="vitalSignsTable">
+                                                                            <thead class="chart-tab-table-header">
+                                                                                <tr class="chart-tab-header">
+                                                                                    <th onclick="sortTable(0)">Date &#x25B2;&#x25BC;</th>
+                                                                                    <th>Diagnoses</th>
+                                                                                    <th>Treatments</th>
+                                                                                    <th>Surgeries</th>
+                                                                                    <th>Medications</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr class="chart-tab-table-body">
+                                                                                    <td>07/11/2024</td>
+                                                                                    <td>Patient was diag...</td>
+                                                                                    <td>Patient was diag...</td>
+                                                                                    <td>Patient was diag...</td>
+                                                                                    <td>Patient was diag...</td>
+                                                                                    <td>
+                                                                                    <a href="javascript:void(0)" class="btn btn-square btn-primary mr-3"
+                                                                                        data-toggle="tooltip" data-placement="top" title="View"
+                                                                                        onclick="makeHistoryFormReadonly();">
+                                                                                        <i class="fa fa-eye color-muted">View</i>
+                                                                                    </a>
+                                        
+                                                                                    <a href="javascript:void(0)" class="btn btn-square btn-secondary mr-3"
+                                                                                        data-toggle="tooltip" data-placement="top" title="Edit"
+                                                                                        onclick="enterHistoryEditMode();">
+                                                                                        <i class="fa fa-pencil color-muted">Edit</i>
+                                                                                    </a>
+                                        
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                    <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                        <label class="view-logs-label" id="viewHistoryLogs" for="tooltip" onclick="historyToggleLogs()">
+                                                                            <strong>View Logs</strong>
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- End of Table in the left side -->
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
                                         </div>
-    
                                     </div>
     
-    
-    
-                                    <div class="tab-pane fade" id="doctorsOrder">
+                                    <div class="tab-pane fade" id="doctorsAssessment">
                                         <div class="pt-4">
-    
-    
+                                            <div>
+                                                <button class="btn btn-outline-primary" onclick="assessmentToggleDivs()">Toggle View</button>
+                                                <div>
+                                            
+                                                    <div class="row grid">
+                                                        <div id="assessmentDiv" class="custom-assessment col-xl-4 col-xxl-12">
+                                                            <div class="assessment-card-input card-input-green">
+                                                                <div class="card-header">
+                                                                    <h4 class="input-header" id="assessmentInputHeader">
+                                                                       Input Mode
+                                                                    </h4>
+                                                                </div>
+                                                                <div class="card-body">
+
+                                                                    <form action="{{ isset($ep_assessment) ? route('ep_assessment.ep_assessment_update', $ep_assessment->ep_assessment_id) : '/emergency/ep-assessment/store' }}" id="assessmentForm" method="POST" onsubmit="" enctype="multipart/form-data">
+                                                                
+                                                                        <!-- Id and Date Section -->
+                                                                    <div class="id-and-date">
+                                                                
+                                                                        <!-- Id and Date Section Text -->
+                                                                        <div class="row id-and-date-text">
+                                                                
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Date</h5>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Time</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Text -->
+                                                                
+                                                                        <!-- Id and Date Section Input -->
+                                                                        <div class="row id-and-date-input">
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="ep_assessment_date" id="assessment-date-input" class="form-control date-input datetime-input">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="time" name="ep_assessment_time" id="assessment-time-input" class="form-control time-input datetime-input">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Input -->
+                                                                
+                                                                    </div>
+                                                                
+                                                                
+                                                                
+                                                                    <div class="assessment-remarks">
+                                                                
+                                                                        <div class="col-md-4">
+                                                                            <h5 class="assessment-text">Assessment</h5>
+                                                                        </div>
+                                                                
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea name="ep_assessment_assessments" id="assessmentInput" class="assessment-input" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                
+                                                                    <!-- New Diagnostic Test Ordering Section -->
+                                                                    <div class="diagnostic-test-order mt-4">
+                                                                        <div class="col-md-8">
+                                                                            <h5 class="assessment-text">Order Diagnostic Test</h5>
+                                                                        </div>
+                                                                
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                <label for="diagnostic-test-select">Choose Test</label>
+                                                                                <select id="diagnostic-test-select" name="ep_assessment_test" class="form-control">
+                                                                                    <option value="" disabled selected>Select test</option>
+                                                                                    <option value="X-ray">X-ray</option>
+                                                                                    <option value="Blood Test">Blood Test</option>
+                                                                                    <option value="MRI">MRI</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="test-priority">Priority</label>
+                                                                                <select id="test-priority" name="ep_assessment_priority" class="form-control">
+                                                                                    <option value="" disabled selected>Priority</option>
+                                                                                    <option value="Routine">Routine</option>
+                                                                                    <option value="Urgent">Urgent</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <label for="test-instructions">Test Instructions</label>
+                                                                                <input type="text" id="test-instructions" name="ep_assessment_test_instruction" class="form-control" placeholder="e.g., fasting required">
+                                                                            </div>
+                                                                        </div>
+                                                                
+                                                                        <div class="row">
+                                                                            
+                                                                            <div class="col-md-6">
+                                                                                <label for="lab-request-file">Email in PDF</label>
+                                                                                <input type="file" id="lab-request-file" name="order_test_file" class="form-control">
+                                                                                <!-- Display current file (if any) -->
+                                                                                <small id="current-file" class="form-text text-muted"></small>
+                                                                            </div>
+                                                                
+                                                                            <div class="col-md-6">
+                                                                                <label for="lab-result-file">Lab Result</label>
+                                                                                <input type="file" id="lab-result-file" name="order_test_file" class="form-control">
+                                                                                <!-- Display current file (if any) -->
+                                                                                <small id="current-file" class="form-text text-muted"></small>
+                                                                            </div>
+                                                                
+                                                                        </div>
+                                                                
+                                                                        <div class="col-md-6">
+                                                                            <h5 class="id-and-date-label">Email: </h5>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                
+                                                                            <input type="text" id="labEmail" name="ep_test_email" class="form-control">
+                                                                        </div>
+                                                                
+                                                                    </div>
+                                                                
+                                                                    <input type="hidden" name="ep_assessment_id" id="epAssessmentId">
+                                                                
+                                                                
+                                                                    <input type="hidden" name="emergency_patient_id" id="assessmentId" value="{{ $emergency_patient->emergency_patient_id }}">
+                                                                
+                                                                    <!-- Footer Buttons -->
+                                                                    <div class="card-footer d-flex justify-content-end">
+                                                                
+                                                                        <!-- Back to Input Mode Button (Initially Hidden) -->
+                                                                        <button type="button" class="btn btn-secondary" id="backToInputButtonAssessment" style="display: none;" onclick="showAssessmentInputMode();">Back to Input Mode</button>
+                                                                        {{-- <button id="downloadFileBtn" class="btn btn-primary ms-3" style="display: none;" onclick="downloadFile()">Download</button> --}}
+                                                                        <a id="downloadFileBtn" class="btn btn-primary ms-3" style="display: none;" onclick="downloadFile()">Download</a>
+                                                                        <button type="button" id="assessmentCancelBtn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Print</button>
+                                                                
+                                                                       
+                                                                        <button type="submit" class="btn btn-primary ms-3" id="editSubmitAssessment" style="display: none;" onclick="showAssessmentSaveAlert(); return false;">
+                                                                            Save Changes
+                                                                        </button>
+                                                                
+                                                                        <button type="submit" id="assessmentSaveBtn" class="btn btn-primary ms-3">Save</button>
+                                                                
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                                
+                                                        <!-- End of card body for vital signs input-->
+                                                        <!-- Table in the left side -->
+                                                        <div id="assessmentMainDiv" class="custom-assessment-table col-xl-8 col-xxl-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Assessment History</h4>
+                                                                </div>
+
+                                                                <div class="card-body">
+                                                                    <div id="assessmentLogsSection" style="display: none;">
+                                                                        <h5>Activity Logs</h5>
+                                                                        <ul id="logEntries">
+                                                                          
+                                                                        </ul>
+                                                                    </div>
+
+                                                                    <div id="assessmentTableContainer">
+                                                                        <table class="chart-tab-table-left" id="vitalSignsTable">
+                                                                            <thead class="chart-tab-table-header">
+                                                                                <tr class="chart-tab-header">
+                                                                                    <th onclick="sortTable(0)">Date &#x25B2;&#x25BC;</th>
+                                                                                    <th>Doctor</th>
+                                                                                    <th>Summary</th>
+                                                                                    <th>Test</th>
+                                                                                    <!-- <th>Status</th> -->
+                                                                                    <th>Priority</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr class="chart-tab-table-body">
+                                                                                    <td style="display: none;"></td>
+                                                                                    <td>07/11/2024</td>
+                                                                                    <td>Alieza Cutamora</td>
+                                                                                    <td>
+                                                                                        <div class="assessment-summary-container">
+                                                                                            <span class="assessment-summary" id="summary-{{ $assessment->id }}">
+                                                                                               Patient is having a hard time...
+                                                                                            </span>
+
+                                                                                            <span class="extra-text" id="extra-{{ $assessment->id }}">
+                                                                                                Patient is having a hard time...
+                                                                                            </span>
+
+                                                                                        </div>
+                                                                                    <td>X-ray</td>
+                                                                                    <td>Urgent</td>
+                                                                                    <td>
+                                                                                        <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
+                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="View"
+                                                                                        onclick="makeAssessmentFormReadonly(); changeFileInputToDownload();">
+                                                                                            <i class="fa fa-eye color-muted">View</i>
+                                                                                        </a>
+
+                                                                                      
+                                                                                        <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
+                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="Edit"
+                                                                                        onclick="enterAssessmentEditMode();">
+                                                                                            <i class="fa fa-pencil color-muted">Edit</i>
+                                                                                        </a>
+                                                                                        
+                                                                                    </td>
+                                                                                </tr>
+                                                                                
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                    <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                        <label class="view-logs-label" id="viewLogs" for="tooltip" onclick="assessmentToggleLogs()">
+                                                                            <strong>View Logs</strong>
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- End of Table in the left side -->
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
-    
                                     </div>
     
-                                    <div class="tab-pane fade" id="nursesNotes">
+                                    <div class="tab-pane fade" id="diagnosisAndProcedure" role="tabpanel">
                                         <div class="pt-4">
-    
-    
+                                            <div>
+                                                <button class="btn btn-outline-primary" onclick="diagnosisToggleDivs()">Toggle View</button>
+                                                <div>
+                                            
+                                                    <div class="row grid">
+                                                        <div id="diagnosisDiv" class="custom-diagnosis col-xl-4 col-xxl-12">
+                                                            <div class="diagnosis-card-input card-input-green">
+                                            
+                                                                
+                                                                <div class="card-header">
+                                                                    <h4 class="input-header" id="reviewInputHeader">
+                                                                       Input Mode
+                                                                    </h4>
+                                                                </div>
+                                                                <!-- Card body for vital signs input-->
+
+                                                                <div class="card-body">
+
+
+                                                                    <form action="{{ isset($diagnosis_and_procedure) ? route('diagnosis_and_procedure.diagnosis_and_procedure_update', $diagnosis_and_procedure->diagnosis_and_procedure_id) : '/emergency/diagnosis-and-procedure/store' }}" id="doctorsReviewForm" method="POST" onsubmit="">
+                                              
+                                                                    <!-- Id and Date Section -->
+                                                                    <div class="id-and-date">
+
+                                                                        <!-- Id and Date Section Text -->
+                                                                        <div class="row id-and-date-text">
+
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Date</h5>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Time</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Text -->
+
+                                                                        <!-- Id and Date Section Input -->
+                                                                        <div class="row id-and-date-input">
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="diagnosis_and_procedure_date" id="diagnosis-date-input1" class="form-control date-input datetime-input">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="time" name="diagnosis_and_procedure_time" id="diagnosis-time-input1" class="form-control time-input datetime-input">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Input -->
+
+                                                                    </div>
+
+                                                                    <!-- doctors-evaluation -->
+                                                                    <div class="doctors-evaluation">
+
+                                                                        <div class="col-md-3">
+                                                                            <h5 class="evaluation-text">EVALUATION</h5>
+                                                                        </div>
+
+                                                                        <div class="impairments-evaluation">
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="impairments-evaluation-text">Impairments</h5>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="input-wrapper" id="impairments-container">
+                                                                                        <textarea id="impairmentInput" class="impairments-evaluation-input" name="impairment" data-toggle="tooltip" placeholder="" rows="1" required></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Impairments Evaluation -->
+
+                                                                        <!-- Activity & Participation Restrictions -->
+                                                                        <div class="activity-restriction-evaluation">
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="activity-restriction-text">Activity & Participation Restrictions</h5>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="input-wrapper" id="activity-restrictions-container">
+                                                                                        <textarea id="activityRestrictionInput" class="activity-restriction-input" name="activity_restriction" data-toggle="tooltip" placeholder="" rows="2" required></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Activity & Participation Restrictions -->
+
+                                                                        <!-- Personal Factors -->
+                                                                        <div class="personal-factor-evaluation">
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="personal-factor-text">Personal Factors</h5>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="input-wrapper" id="personal-factors-container">
+                                                                                        <textarea id="personalFactorInput" class="personal-factor-input" name="personal_factor" data-toggle="tooltip" placeholder="" rows="2" required></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Personal Factors -->
+
+                                                                        <!-- Environmental Factors -->
+                                                                        <div class="environmental-factor-evaluation">
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="environmental-factor-text">Environmental Factors</h5>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="input-wrapper" id="environmental-factors-container">
+                                                                                        <textarea id="environmentalFactorInput" class="environmental-factor-input" name="environmental_factor" data-toggle="tooltip" placeholder="" rows="2" required></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Environmental Factors -->
+
+
+
+                                                                    </div>
+                                                                    <!--End of doctors-evaluation -->
+
+
+
+
+                                                                    <!-- DIAGNOSIS Pattern -->
+                                                                    <div class="diagnosis-remarks">
+
+                                                                        <div class="col-md-3">
+                                                                            <h5 class="diagnosis-text">Diagnosis</h5>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea id="diagnosisInput1" class="diagnosis-input" name="diagnosis" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!--End of DIAGNOSIS Pattern -->
+
+                                                                    <!-- PROGNOSIS Pattern -->
+                                                                    <div class="prognosis-remarks">
+
+                                                                        <div class="col-md-3">
+                                                                            <h5 class="prognosis-text">Prognosis</h5>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <textarea id="prognosisInput" class="prognosis-input" name="prognosis" data-toggle="tooltip" placeholder="" rows="4" required></textarea>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <!--End of PROGNOSIS Pattern -->
+
+
+                                                                    <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
+
+
+                                                                    <!-- Footer Buttons -->
+                                                                    <div class="card-footer d-flex justify-content-end">
+                                                                        <!-- Back to Input Mode Button (Initially Hidden) -->
+                                                                        <button type="button" class="btn btn-secondary" id="backToInputButtonReview" style="display: none;" onclick="showReviewInputMode();">Back to Input Mode</button>
+
+                                                                       
+                                                                        <button type="button" id="reviewCancelBtn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Clear</button>
+
+                                                                        <button type="submit" class="btn btn-primary ms-3" id="editSubmitReview" style="display: none;" onclick="showDoctorsReviewSaveAlert(); return false;">
+                                                                            Save Changes
+                                                                        </button>
+
+                                                                        <button type="submit" id="reviewSaveBtn" class="btn btn-primary ms-3">Save</button>
+
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+                                                                <!-- End of card body for vital signs input-->
+
+                                            
+                                            
+                                                            </div>
+                                                        </div>
+                                            
+                                            
+                                                        <!-- Table in the left side -->
+                                                        <div id="diagnosisMainDiv" class="custom-diagnosis-table col-xl-8 col-xxl-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Patient's Vital Signs</h4>
+                                                                </div>
+                                            
+                                                                <div class="card-body">
+                                                                    <div id="reviewLogsSection" style="display: none;">
+                                                                        <h5>Activity Logs</h5>
+                                                                        <ul id="logEntries">
+                                                                           
+                                                                        </ul>
+                                                                    </div>
+                                            
+                                                                    <div id="diagnosis-and-procedure-container">
+                                                                        <table class="chart-tab-table-left" id="diagnosisAndProcedureTable">
+                                                                            <thead class="chart-tab-table-header">
+                                                                                <tr class="chart-tab-header">
+                                                                                    <th onclick="sortTable(0)">Date &#x25B2;&#x25BC;</th>
+                                                                                    <th>Doctor</th>
+                                                                                    <th>Evaluation</th>
+                                                                                    <th>Prognosis</th>
+                                                                                    <th>Diagnosis</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                               
+                                                                                <tr class="chart-tab-table-body">
+                                                                                    <td>07/11/2024
+                                                                                    </td>
+                                                                                    <td>Dr. Protacio</td> <!-- Doctor's Name -->
+                                    
+                                                                                    <td>
+                                                                                        Patient is....
+                                                                                    </td>
+                                                                                    <td> Patient is....</td>
+                                                                                    <td> Patient is....</td>
+
+                                                                                    <td>                                    
+                                                                                        <a href="javascript:void(0)" class="btn btn-square btn-primary mr-3"
+                                                                                            data-toggle="tooltip" data-placement="top" title="View"
+                                                                                            onclick="makeReviewFormReadonly();">
+                                                                                            <i class="fa fa-eye color-muted"></i>
+                                                                                        </a>
+                                                                                        <a href="javascript:void(0)" class="btn btn-square btn-secondary mr-3"
+                                                                                            data-toggle="tooltip" data-placement="top" title="Edit"
+                                                                                            onclick="enterReviewEditMode();">
+                                                                                            <i class="fa fa-pencil color-muted"></i>
+                                                                                        </a>
+                                                                                       
+                                                                                    </td>
+                                                                                </tr>
+                                                                                  
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                            
+                                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                    <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                        <label class="view-logs-label" id="viewLogs" for="tooltip" onclick="reviewToggleLogs()">
+                                                                            <strong>View Logs</strong>
+                                                                        </label>
+                                                                    </div>
+                                            
+                                                                    <div>
+                                                                        <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                    </div>
+                                            
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                            
+                                                        <!-- End of Table in the left side -->
+                                            
+                                                    </div>
+                                            
+                                                </div>
+                                            </div>
+                                            
+                                            
                                         </div>
-    
                                     </div>
     
-                                    <div class="tab-pane fade" id="intakeAndOutput">
+                                    <div class="tab-pane fade" id="treatmentPlan">
                                         <div class="pt-4">
     
-    
+                                            <div>
+                                                <button class="btn btn-outline-primary" onclick="treatmentToggleDivs()">Toggle View</button>
+                                                <div>
+
+                                                    <div class="row grid">
+                                                        <div id="treatmentDiv" class="custom-treatment col-xl-4 col-xxl-12">
+                                                            <div class="treatment-card-input card-input-green">
+
+                                                                <div class="card-header">
+                                                                    <h4 class="input-header" id="treatmentInputHeader">
+                                                                       Input Mode
+                                                                    </h4>
+                                                                </div>
+                                                                <!-- Card body for vital signs input-->
+
+                                                                <div class="card-body">
+
+                                                                    <form action="{{ isset($ep_treatment_plan) ? route('ep_treatment_plan.ep_treatment_plan_update', $ep_treatment_plan->ep_treatment_plan_id) : '/emergency/treatment-plan/store' }}" id="treatmentForm" method="POST" onsubmit="">
+                            
+                                                                        <!-- Id and Date Section -->
+                                                                    <div class="id-and-date" style="display: none;">
+
+                                                                        <!-- Id and Date Section Text -->
+                                                                        <div class="row id-and-date-text">
+                                                                    
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Date</h5>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Time</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Text -->
+
+                                                                        <!-- Id and Date Section Input -->
+                                                                        <div class="row id-and-date-input">
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" name="" id="treatment-date-input" class="form-control date-input datetime-input">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="time" name="" id="treatment-time-input" class="form-control time-input datetime-input">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- End of Id and Date Section Input -->
+
+                                                                    </div>
+
+                                                                    <div class="treatment-remarks">
+                                                                        <div class="row id-and-date-text">
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Start Date</h5>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="id-and-date-label">End Date</h5>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" id="startDateInput" name="ep_treatment_plan_start_date" class="form-control weight-input" required min="{{ date('Y-m-d') }}"></input>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="date" id="endDateInput" name="ep_treatment_plan_end_date" class="form-control weight-input" required min="{{ date('Y-m-d') }}"></input>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="treatment-remarks">
+                                                                        <div class="row id-and-date-text">
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Medication Name</h5>
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <h5 class="id-and-date-label">Dosage</h5>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <input type="text" id="medicationInput1" class="form-control weight-input" name="ep_treatment_plan_medication" required></input>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input type="text" id="dosageInput" class="form-control weight-input" name="ep_treatment_plan_dosage" required></input>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="treatment-remarks">
+                                                                        <div class="row id-and-date-text">
+                                                                            <div class="col-md-6">
+                                                                                <h5 class="id-and-date-label">Frequency</h5>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <h5 class="id-and-date-label">Duration</h5>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <select id="frequencyInput" class="form-control weight-input" name="ep_treatment_plan_frequency" required>
+                                                                                    <option value="" disabled selected>Select Frequency</option>
+                                                                                    <option value="QD">QD</option>
+                                                                                    <option value="BID">BID</option>
+                                                                                    <option value="TID">TID</option>
+                                                                                    <option value="QID">QID</option>
+                                                                                    <option value="QH">QH</option>
+                                                                                    <option value="Q2H">Q2H</option>
+                                                                                    <option value="Q4H">Q4H</option>
+                                                                                    <option value="Q6H">Q6H</option>
+                                                                                    <option value="Q8H">Q8H</option>
+                                                                                    <option value="Q12H">Q12H</option>
+                                                                                    <option value="QHS">QHS</option>
+                                                                                    <option value="QAM">QAM</option>
+                                                                                    <option value="QPM">QPM</option>
+                                                                                    <option value="QOD">QOD</option>
+                                                                                    <option value="QWK">QWK</option>
+                                                                                    <option value="PRN">PRN</option>
+                                                                                </select>
+                                                                            </div>
+
+                                                                            <div class="col-md-6">
+                                                                                <input type="text" id="durationInput" class="form-control weight-input" name="ep_treatment_plan_duration" required></input>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label for="additionalNotes">Additional Notes</label>
+                                                                        <textarea class="form-control" id="additionalNotes" name="ep_treatment_plan_note"></textarea>
+                                                                    </div>
+
+                                                                    <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
+
+                                                                    <!-- Footer Buttons -->
+                                                                    <div class="card-footer d-flex justify-content-end">
+
+                                                                        <!-- Back to Input Mode Button (Initially Hidden) -->
+                                                                        <button type="button" class="btn btn-secondary" id="backToInputButtonTreatment" style="display: none;" onclick="showTreatmentInputMode();">Back to Input Mode</button>
+                                                                        <!-- <button id="downloadFileBtn" class="btn btn-primary ms-3" style="display: none;" onclick="downloadFile()">Download</button> -->
+                                                                        
+                                                                        <button type="button" id="treatmentCancelBtn" class="btn btn-secondary btn sweet-confirm me-3" data-dismiss="modal">Clear</button>
+                                                                    
+
+                                                                       
+                                                                        <button type="submit" class="btn btn-primary ms-3" id="editSubmitTreatment" style="display: none;" onclick="showTreatmentSaveAlert(); return false;">
+                                                                            Save Changes
+                                                                        </button>
+
+                                                                        <button type="submit" id="treatmentSaveBtn" class="btn btn-primary ms-3">Save</button>
+
+                                                                    </div>
+                                                                </div>
+                                                                </form>
+
+                                                                <!-- End of card body for vital signs input-->
+
+
+
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!-- Table in the left side -->
+                                                        <div id="treatmentMainDiv" class="custom-treatment-table col-xl-8 col-xxl-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Treatment History</h4>
+                                                                </div>
+
+                                                                <div class="card-body">
+                                                                    <div id="treatmentLogsSection" style="display: none;">
+                                                                        <h5>Activity Logs</h5>
+                                                                        <ul id="docLogEntries">
+                                                                           
+                                                                        </ul>
+                                                                    </div>
+                                                            
+
+                                                                    <div id="treatmentTableContainer">
+                                                                        <table class="chart-tab-table-left" id="vitalSignsTable">
+                                                                            <thead class="chart-tab-table-header">
+                                                                                <tr class="chart-tab-header">
+                                                                                    <th onclick="sortTable(0)">Created &#x25B2;&#x25BC;</th>
+                                                                                    <th>Doctor</th>
+                                                                                    <th>Medication</th>
+                                                                                    <th>Dosage</th>
+                                                                                    <th>Frequency</th>
+                                                                                    <th>Duration</th>
+                                                                                    <th>End</th>
+                                                                                    <th>Status</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                <tr class="chart-tab-table-body">
+                                                                                    <td>07/11/2024</td>
+                                                                                    <td>Dr. Protacio</td> <!-- Doctor's Name -->
+                                                                                    <td>Biogesic</td>
+                                                                                    <td>120Mg</td>
+                                                                                    <td>Q4H</td>
+                                                                                    <td>7 Days</td>
+                                                                                    <td>14/11/2024</td>
+                                                                                    <td>Scheduled</td>
+                                                                                    <td>
+                                                                                    <a href="javascript:void()" class="btn btn-square btn-primary mr-3"
+                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="View"
+                                                                                        onclick="makeTreatmentFormReadonly();">
+                                                                                        <i class="fa fa-eye color-muted"></i>
+                                                                                    </a>
+
+                                                                                    <a href="javascript:void()" class="btn btn-square btn-secondary mr-3"
+                                                                                        data-toggle="tooltip" type="button" data-placement="top" title="Edit"
+                                                                                        onclick="enterTreatmentEditMode();">
+                                                                                        <i class="fa fa-pencil color-muted"></i>
+                                                                                    </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                               
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                    <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                        <label class="view-logs-label" id="viewLogs" for="tooltip" onclick="treatmentToggleLogs()">
+                                                                            <strong>View Log</strong>
+                                                                        </label>
+                                                                        
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- End of Table in the left side -->
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
                                         </div>
     
                                     </div>
     
                                     <div class="tab-pane fade" id="medicationLog">
                                         <div class="pt-4">
-    
-    
+                                           
+
+                                            <div>
+                                                <div>
+                                            
+                                                    <div class="row grid">
+                                            
+                                                        <!-- Table in the left side -->
+                                                        <div class="col-xl-12 col-xxl-12">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h4 class="card-title">Assessment History</h4>
+                                                                </div>
+                                            
+                                                                <div class="card-body">
+                                                                    <div id="assessmentLogsSection" style="display: none;">
+                                                                        <h5>Activity Logs</h5>
+                                                                        <ul id="logEntries">
+                                                                           
+                                                                        </ul>
+                                                                    </div>
+                                            
+                                                                    <div id="carePlanTableContainer">
+                                                                        <table class="chart-tab-table-left" id="carePlanTable">
+                                                                            <thead class="chart-tab-table-header">
+                                                                                <tr class="chart-tab-header">
+                                                                                    <th onclick="sortTable(0)">Date &#x25B2;&#x25BC;</th>
+                                                                                    <th>Dose Number</th>
+                                                                                    <th>Scheduled Time</th>
+                                                                                    <th>Status</th>
+                                                                                    <th>Action</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                               
+                                                                               
+                                                                                <tr class="chart-tab-table-body">
+                                                                                    <td>07/11/2024</td>
+                                                                                    <td>1.1</td> <!-- To show a unique number -->
+                                                                                    <td>12:00PM</td>
+                                                                                    <td>Scheduled</td>
+                                                                                    <td>
+                                                                                      
+                                                                                        <button onclick="administerDose('{{ $care_plan->care_plan_id }}')" class="btn btn-square btn-secondary">
+                                                                                            <i class="fa fa-check color-muted"></i> Administer
+                                                                                        </button>
+                                                                                    
+
+                                                                                           
+                                                                                    </td>
+                                                                                </tr>
+                                                                                        
+                                            
+                                                                              
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                            
+                                                                </div>
+                                            
+                                                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                                                    <div class="tooltip-container" style="position: relative; display: inline-block;">
+                                                                        <label class="view-logs-label" id="nurseViewLogs" for="tooltip" onclick="nurseTreatmentToggleLogs()">
+                                                                            <strong>Nurse's Log</strong>
+                                                                        </label>
+                                                                    </div>
+                                            
+                                                                    <div>
+                                                                        <button type="submit" id="print-btn" class="btn btn-primary print-charts">Print</button>
+                                                                    </div>
+                                                                    <input type="hidden" name="emergency_patient_id" value="{{ $emergency_patient->emergency_patient_id }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                            
+                                                        <!-- End of Table in the left side -->
+                                            
+                                                    </div>
+                                            
+                                                </div>
+                                            </div>
+                                            
+                                            
+
+
                                         </div>
-    
                                     </div>
     
-                                    <div class="tab-pane fade" id="ivFluid">
+                                    <div class="tab-pane fade" id="careActivityHistory">
                                         <div class="pt-4">
+                                         
+                                        </div>
     
+                                    </div>
+    
+                                    <div class="tab-pane fade" id="dischargeSummary">
+                                        <div class="pt-4">
+                                           
     
                                         </div>
     
                                     </div>
+    
                                     <div class="tab-pane fade" id="charges">
                                         <div class="pt-4">
-    
+                                           
     
                                         </div>
     
                                     </div>
+    
                                 <!--End of Testing Tab -->
     
                                 </div>
@@ -868,13 +1967,28 @@
     <!--**********************************
         Scripts
     ***********************************-->
-<script src="/js/charts_graph.js"></script>
-<script src="/js/charts_mode.js"></script> 
-<script src="/js/charts_reminder.js"></script>
-<script src="/js/charts_vital_color.js"></script> 
+
+<script src="/admin_med/js/tooltips.js"></script>
+<script src="/admin_med/js/patient_charts.js"></script>
+<script src="/admin_med/js/charts_graph.js"></script>
+<script src="/admin_med/js/charts_mode.js"></script> 
+<script src="/admin_med/js/charts_reminder.js"></script>
+<script src="/admin_med/js/charts_vital_color.js"></script> 
+<script src="/admin_med/js/emergency_registration.js"></script>
+
+
+<script src="/admin_med/js/data_validation.js"></script>
+<script src="/admin_med/js/treatment_end.js"></script>
+
+
+
 <script src="admin_medcss/theme/vendor/global/global.min.js"></script>
 <script src="admin_medcss/theme/js/quixnav-init.js"></script>
 <script src="admin_medcss/theme/js/custom.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
 <script src="admin_medcss/theme/vendor/chartist/js/chartist.min.js"></script>
 
@@ -922,7 +2036,6 @@
 
 <script src="admin_medcss/theme/js/plugins-init/form-pickers-init.js"></script>
 
-<script src="/js/emergency_registration.js"></script>
     
 
     

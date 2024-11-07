@@ -4,7 +4,7 @@
 
 <head>
    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2.0, user-scalable=1">
 <meta name="HandheldFriendly" content="true" />
@@ -59,7 +59,80 @@
 
 <link rel="stylesheet" href="/css/emergency_registration.css">
 
+<style>
+    /* Main Navigation styling */
+.main-navigation {
+    background-color: white;
+    padding: 3px 8px; /* Reduce padding for less height */
+    margin-left: -17.1875rem;
+}
 
+.new-header-navigation{
+    margin-bottom: 17rem;
+}
+
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Align the links horizontally */
+    justify-content: flex-start; /* Align the items to the left */
+    gap: 20px; /* Add space between the navigation items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li {
+    position: relative; /* Required for dropdowns */
+    padding: 0; /* Remove any padding from list items */
+    margin: 0; /* Remove margin if present */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #003263; /* Text color */
+    padding: 3px 8px; /* Add padding to make the clickable area larger */
+    display: inline-flex; /* Ensure the icon and text are aligned */
+    align-items: center; /* Vertically align the icon and text */
+    border-radius: 5px; /* Slight rounding for aesthetics */
+    font-size: 11px;
+}
+
+.nav-links a:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Dropdown menu */
+.nav-links li ul.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position dropdown relative to the parent */
+    top: 100%; /* Align dropdown directly under the parent link */
+    left: 0; /* Align dropdown to the left */
+    background-color: #fff; /* White background for dropdown */
+    list-style: none; /* Remove bullets from dropdown */
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
+}
+
+.nav-links li ul.dropdown li {
+    width: 180px; /* Set a fixed width for the dropdown items */
+}
+
+.nav-links li ul.dropdown a {
+    padding: 10px 20px; /* Add padding to dropdown links */
+    display: block; /* Make the dropdown links full-width */
+}
+
+.nav-links li ul.dropdown a:hover {
+    background-color: #f0f0f0; /* Highlight dropdown item on hover */
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover ul.dropdown {
+    display: block; /* Display dropdown when hovering over parent */
+}
+
+</style>
 </head>
 
 <body>
@@ -93,12 +166,6 @@
                 <img class="logo-compact" src="/images/syncore-text.png" alt="">
                 <img class="brand-title" src="/images/syncore-text.png" alt="">
             </a>
-        
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
         </div>
         <!--**********************************
             Nav header end
@@ -111,69 +178,37 @@
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
+                        <!-- Left side (brand, logo, etc.) can go here -->
                         <div class="header-left"></div>
         
+                        <!-- Right side (notifications, profile dropdown, etc.) -->
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown notification_dropdown">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" id="notificationToggle">
                                     <i class="mdi mdi-bell"></i>
                                     <div class="pulse-css"></div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="list-unstyled">
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-user"></i></span>
+                                    <ul class="list-unstyled" id="notification-list">
+                                       
+                                        <li class="media dropdown-item notification-item"
+                                            id="notification-{{ $notification->notification_id }}"
+                                            data-id="{{ $notification->notification_id }}">
+                                            <span class="success"><i class="ti-check"></i></span>
                                             <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
+                                                <p>
+                                                    <strong></strong>
+                                                    
+                                                </p>
                                             </div>
-                                            <span class="notify-time">3:20 am</span>
+                                            <span class="notify-time"></span>
                                         </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-shopping-cart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="danger"><i class="ti-bookmark"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="primary"><i class="ti-heart"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong>David</strong> purchased Light Dashboard 1.0.</p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
-                                        <li class="media dropdown-item">
-                                            <span class="success"><i class="ti-image"></i></span>
-                                            <div class="media-body">
-                                                <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
-                                                        Successfully
-                                                    </p>
-                                                </a>
-                                            </div>
-                                            <span class="notify-time">3:20 am</span>
-                                        </li>
+                                  
                                     </ul>
-                                    <a class="all-notification" href="#">See all notifications <i
-                                            class="ti-arrow-right"></i></a>
+        
+                                    <a class="all-notification" href="{{ route('notifications.allNotifications') }}">
+                                        See all notifications <i class="ti-arrow-right"></i>
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown header-profile">
@@ -190,10 +225,11 @@
                                         <span class="ml-2">Inbox </span>
                                     </a>
                                     <form action="/logout" method="POST">
-                                        <a class="dropdown-item block py-2 pr-5 pl-4">
+                                        
+                                        <button type="submit" class="dropdown-item block py-2 pr-5 pl-4 bg-transparent border-0">
                                             <i class="icon-key"></i>
-                                            <span class="ml-2">Logout </span>
-                                        </a>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
                                     </form>
                                 </div>
                             </li>
@@ -201,62 +237,28 @@
                     </div>
                 </nav>
             </div>
+            <div class="new-header-navigation">
+                <nav class="main-navigation">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="mdi mdi-home mdi-24px"></i> Home</a></li>
+                    <li><a href="#"><i class="mdi mdi-calendar mdi-24px"></i> Calendar</a></li>
+                    <li>
+                        <a href="#"><i class="mdi mdi-folder-outline mdi-24px"></i> Records</a>
+                        <ul class="dropdown">
+                            <li><a href="/emergency-records">Emergency Patients</a></li>
+                            <li><a href="/patient/index">In-Patients</a></li>
+                            <li><a href="javascript:void()">Out-Patients</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="mdi mdi-monitor mdi-24px"></i> Transactions</a></li>
+                </ul>
+                </nav>
+            </div>
+        
         </div>
         
         <!--**********************************
             Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
-        <div class="quixnav">
-            <div class="quixnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Dashboard</li>
-                    <li>
-                        <a href="{{ url('') }}" aria-expanded="false">
-                            <i class="mdi mdi-home mdi-24px"></i>
-                            <span class="nav-text">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="calendar" aria-expanded="false">
-                            <i class="mdi mdi-calendar mdi-24px"></i>
-                            <span class="nav-text">Calendar</span>
-                        </a>
-                    </li>
-                    <li class="nav-label">Patient</li>
-                    <li>
-                        <a href="overall_records" aria-expanded="false">
-                            <i class="icon icon-single-04"></i>
-                            <span class="nav-text">Overview</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="records" aria-expanded="false">
-                            <i class="mdi mdi-folder-outline mdi-24px"></i>
-                            <span class="nav-text">Records</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
-                            <li><a href="inpatient_records" aria-expanded="false">In-Patients</a>
-                            </li>
-                            <li><a href="javascript:void()">Out-Patients</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Transactions</li>
-                    <li>
-                        <a href="javascript:void()" aria-expanded="false">
-                            <i class="mdi mdi-monitor mdi-24px"></i>
-                            <span class="nav-text">Transactions</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--**********************************
-            Sidebar end
         ***********************************-->
         
         <!--**********************************

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en" class="supernova">
+
+<head>
+   
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2.0, user-scalable=1">
+<meta name="HandheldFriendly" content="true" />
+<title>Syncore Medical Center</title>
+
+<!-- Custom sidebar -->
+
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="/images/syncore_logo.png">
+<link href="admin_medcss/theme/vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/chartist/css/chartist.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+<!-- Form step -->
+<link href="admin_medcss/theme/vendor/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+<!-- Datatable -->
+<link href="admin_medcss/theme/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+<!-- Calendar -->
+<link href="admin_medcss/theme/vendor/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/css/style.css" rel="stylesheet">
+
+
+
+<!-- Custom Stylesheet -->
+<link href="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+<!-- Page plugins css -->
+<link href="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<!-- Date picker plugins css -->
+<link href="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+<!-- Daterange picker plugins css -->
+<link href="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+<link id="custom-font" type="text/css" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Lato" />
+<!-- <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/themes/CSS/defaultV2.css?v=de56e2d" /> -->
+
+<link href="admin_medcss/reg_form/css/defaultV2.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-common.css" rel="stylesheet" />
+<link href="admin_medcss/reg_form/css/form-design.css" rel="stylesheet" />
+
+
+<script src="/admin_med/js/room_assignment.js"></script>
+<script src="/admin_med/js/room_reassignment.js"></script>
+
+<!-- custom stylesheet -->
+
+<!-- Vanilla Datepicker -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/css/datepicker.min.css">
+
+<link rel="stylesheet" href="/css/emergency_registration.css">
+
+<style>
+    /* Main Navigation styling */
+.main-navigation {
+    background-color: white;
+    padding: 3px 8px; /* Reduce padding for less height */
+    margin-left: -17.1875rem;
+}
+
+.new-header-navigation{
+    margin-bottom: 17rem;
+}
+
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Align the links horizontally */
+    justify-content: flex-start; /* Align the items to the left */
+    gap: 20px; /* Add space between the navigation items */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li {
+    position: relative; /* Required for dropdowns */
+    padding: 0; /* Remove any padding from list items */
+    margin: 0; /* Remove margin if present */
+}
+
+.nav-links a {
+    text-decoration: none; /* Remove underline from links */
+    color: #003263; /* Text color */
+    padding: 3px 8px; /* Add padding to make the clickable area larger */
+    display: inline-flex; /* Ensure the icon and text are aligned */
+    align-items: center; /* Vertically align the icon and text */
+    border-radius: 5px; /* Slight rounding for aesthetics */
+    font-size: 11px;
+}
+
+.nav-links a:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Dropdown menu */
+.nav-links li ul.dropdown {
+    display: none; /* Hide dropdown by default */
+    position: absolute; /* Position dropdown relative to the parent */
+    top: 100%; /* Align dropdown directly under the parent link */
+    left: 0; /* Align dropdown to the left */
+    background-color: #fff; /* White background for dropdown */
+    list-style: none; /* Remove bullets from dropdown */
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for dropdown */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
+}
+
+.nav-links li ul.dropdown li {
+    width: 180px; /* Set a fixed width for the dropdown items */
+}
+
+.nav-links li ul.dropdown a {
+    padding: 10px 20px; /* Add padding to dropdown links */
+    display: block; /* Make the dropdown links full-width */
+}
+
+.nav-links li ul.dropdown a:hover {
+    background-color: #f0f0f0; /* Highlight dropdown item on hover */
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover ul.dropdown {
+    display: block; /* Display dropdown when hovering over parent */
+}
+
+</style>
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    <div class="dim-overlay"></div>
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="/admin_med/layout/emergency_records.html" class="brand-logo">
+                <img class="logo-abbr" sizes="200x200" src="/images/syncore_logo.png" alt="">
+                <img class="logo-compact" src="/images/syncore-text.png" alt="">
+                <img class="brand-title" src="/images/syncore-text.png" alt="">
+            </a>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <!-- Left side (brand, logo, etc.) can go here -->
+                        <div class="header-left"></div>
+        
+                        <!-- Right side (notifications, profile dropdown, etc.) -->
+                        <ul class="navbar-nav header-right">
+                            <li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown" id="notificationToggle">
+                                    <i class="mdi mdi-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="list-unstyled" id="notification-list">
+                                       
+                                        <li class="media dropdown-item notification-item"
+                                            id="notification-{{ $notification->notification_id }}"
+                                            data-id="{{ $notification->notification_id }}">
+                                            <span class="success"><i class="ti-check"></i></span>
+                                            <div class="media-body">
+                                                <p>
+                                                    <strong></strong>
+                                                    
+                                                </p>
+                                            </div>
+                                            <span class="notify-time"></span>
+                                        </li>
+                                  
+                                    </ul>
+        
+                                    <a class="all-notification" href="{{ route('notifications.allNotifications') }}">
+                                        See all notifications <i class="ti-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="./app-profile.html" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+                                    <a href="./email-inbox.html" class="dropdown-item">
+                                        <i class="icon-envelope-open"></i>
+                                        <span class="ml-2">Inbox </span>
+                                    </a>
+                                    <form action="/logout" method="POST">
+                                        
+                                        <button type="submit" class="dropdown-item block py-2 pr-5 pl-4 bg-transparent border-0">
+                                            <i class="icon-key"></i>
+                                            <span class="ml-2">Logout</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="new-header-navigation">
+                <nav class="main-navigation">
+                <ul class="nav-links">
+                    <li><a href="#"><i class="mdi mdi-home mdi-24px"></i> Home</a></li>
+                    <li><a href="#"><i class="mdi mdi-calendar mdi-24px"></i> Calendar</a></li>
+                    <li>
+                        <a href="#"><i class="mdi mdi-folder-outline mdi-24px"></i> Records</a>
+                        <ul class="dropdown">
+                            <li><a href="/admin_med/layout/emergency_records.html">Emergency Patients</a></li>
+                            <li><a href="/admin_med/layout/inpatient.html">Inpatients</a></li>
+                            <li><a href="javascript:void()">Out-Patients</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="mdi mdi-monitor mdi-24px"></i> Transactions</a></li>
+                </ul>
+                </nav>
+            </div>
+        
+        </div>
+        
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+
+        
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        
+        <div class="content-body mt-5">
+            <div class="container-fluid">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-default">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example2" class=" display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Last name</th>
+                                                <th>First name</th>
+                                                <th>Bed Number</th>
+                                                <th>Priority Level</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+    
+                                        <tbody>
+                                          
+                                           
+                                            <tr>
+                                                <td>Reyes</td>
+                                                <td>Jarrell</td>
+                                                <td>10</td>
+                                                <td>3 - Urgent</td>
+                                                <td>
+                                                    <a href="javascript:void()" class="btn btn-square btn-primary mr-4" data-toggle="tooltip"
+                                                        type="button" data-placement="top" title="View">
+                                                        <i class="fa fa-eye color-muted">View</i>
+                                                    </a>
+                                                    <a href="javascript:void(0)" id="assignRoomBtn" class="btn btn-square btn-warning mr-4"
+                                                        data-toggle="modal"
+                                                        data-target="#roomReassignmentModal"
+                                                        data-current-bed="{{ $patient->bed_assignments?->bed_no ?? 'N/A' }}"
+                                                        data-emergency-patient-id="{{ $patient->emergency_patient_id }}"
+                                                        onclick="openRoomReassignmentModal(this)">
+                                                        <i class="fa fa-bed color-success">Re-assign</i>
+                                                    </a>
+                                                    
+                                                </td>
+                                            </tr>
+                      
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+<script src="admin_medcss/theme/vendor/global/global.min.js"></script>
+<script src="admin_medcss/theme/js/quixnav-init.js"></script>
+<script src="admin_medcss/theme/js/custom.min.js"></script>
+
+<script src="admin_medcss/theme/vendor/chartist/js/chartist.min.js"></script>
+
+<script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+<script src="admin_medcss/theme/vendor/pg-calendar/js/pignose.calendar.min.js"></script>
+
+<script src="admin_medcss/theme/js/dashboard/dashboard-2.js"></script>
+<!-- Circle progress -->
+
+<!-- Datatable -->
+<script src="admin_medcss/theme/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="admin_medcss/theme/js/plugins-init/datatables.init.js"></script>
+
+<script src="admin_medcss/theme/vendor/jquery-steps/build/jquery.steps.min.js"></script>
+<script src="admin_medcss/theme/vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- Form validate init -->
+<script src="admin_medcss/theme/js/plugins-init/jquery.validate-init.js"></script>
+
+<!-- Form step init -->
+<script src="admin_medcss/theme/js/plugins-init/jquery-steps-init.js"></script>
+
+<!-- Full Calendar -->
+<script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+<script src="admin_medcss/theme/vendor/jqueryui/js/jquery-ui.min.js"></script>
+<script src="admin_medcss/theme/vendor/moment/moment.min.js"></script>
+<script src="admin_medcss/theme/vendor/fullcalendar/js/fullcalendar.min.js"></script>
+<script src="admin_medcss/theme/js/plugins-init/fullcalendar-init.js"></script>
+
+<!-- Daterangepicker -->
+<script src="admin_medcss/theme/vendor/common/common.min.js"></script>
+<script src="admin_medcss/theme/js/custom.min.js"></script>
+<script src="admin_medcss/theme/js/settings.js"></script>
+<script src="admin_medcss/theme/js/gleek.js"></script>
+<script src="admin_medcss/theme/js/styleSwitcher.js"></script>
+
+<script src="admin_medcss/theme/vendor/moment/moment.js"></script>
+<script src="admin_medcss/theme/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="admin_medcss/theme/vendor/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="admin_medcss/theme/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<script src="admin_medcss/theme/js/plugins-init/form-pickers-init.js"></script>
+
+<script src="/js/emergency_registration.js"></script>
+<script src="/js/charts_graph.js"></script>
+<script src="/js/charts_mode.js"></script> 
+<script src="/js/charts_reminder.js"></script>
+<script src="/js/charts_vital_color.js"></script>
+
+    <!-- custom script -->
+    <script src="form/script.js"></script>
+    
+    <!-- Vanilla Datepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
+    
+    <script>
+        var elems = document.querySelectorAll('.date-picker');
+    
+        elems.forEach(function (elem) {
+            new Datepicker(elem, {
+                autohide: true,            // Hide after selection
+                format: 'yyyy-mm-dd',      // Format for backend/database storage
+                altInput: true,            // Enable alternate input display
+                altFormat: 'MM dd, yyyy',  // Display format for users
+                todayHighlight: true       // Highlight today's date
+            });
+        });
+    </script>
+
+</body>
+
+</html>

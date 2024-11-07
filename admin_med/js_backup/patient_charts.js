@@ -1,4 +1,3 @@
-
 let remarks = [];
 // Normal ranges
 const normalRanges = {
@@ -86,7 +85,7 @@ function validateInput(input, type) {
                     isValid = false;
                 }
                 break;
-
+            
             case 'height':
                 // Check if the input is a valid number (allowing decimals)
                 if (isNaN(numberValue)) {
@@ -165,164 +164,6 @@ function validateInput(input, type) {
     return isValid;
 }
 
-
-
-
-function showSaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("vitalSignsForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showHistorySaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("epHistoryForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showAssessmentSaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("assessmentForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showDoctorsReviewSaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("doctorsReviewForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showDoctorsReviewSaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("doctorsReviewForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showTreatmentSaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("treatmentForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-function showSummarySaveAlert() {
-    // SweetAlert confirmation
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "Click okay to save changes.",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Okay',
-        cancelButtonText: 'Cancel',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // User clicked "Okay" - proceed with the save
-            // document.getElementById("yourFormId").submit(); // Replace "yourFormId" with the actual form ID
-            document.getElementById("epDischargeForm").submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            // User clicked "Cancel" - no action taken
-            Swal.fire('Cancelled', 'Your changes were not saved.', 'error');
-        }
-    });
-}
-
-
 function clearRemarks() {
     remarks = []; // Reset the remarks array
     document.getElementById('remarksInput').value = ''; // Clear the remarks input field
@@ -364,9 +205,20 @@ function updateRespPattern(respRate) {
 }
 
 
+function toggleTooltip() {
+    const tooltip = document.getElementById('tooltip');
+    const isVisible = tooltip.style.display === 'block';
+    tooltip.style.display = isVisible ? 'none' : 'block';
+}
 
 
-
+window.addEventListener('click', function(event) {
+    const tooltip = document.getElementById('tooltip');
+    const normalRangesLabel = document.getElementById('normalRanges');
+    if (!normalRangesLabel.contains(event.target) && !tooltip.contains(event.target)) {
+        tooltip.style.display = 'none'; // Hide tooltip if clicked outside
+    }
+});
 
 function setCurrentDate() {
     const dateInput = document.getElementById('datetime-input');
@@ -391,11 +243,11 @@ function sortTable(columnIndex) {
     rows.sort((rowA, rowB) => {
         const cellA = rowA.querySelectorAll('td')[columnIndex].textContent;
         const cellB = rowB.querySelectorAll('td')[columnIndex].textContent;
-
+        
         // Parse the date from the string
         const dateA = new Date(cellA);
         const dateB = new Date(cellB);
-
+        
         // Handle NaN for invalid dates
         const comparison = isNaN(dateA) || isNaN(dateB) ? 0 : dateA - dateB;
 
@@ -457,31 +309,34 @@ window.onload = function() {
         validateInput(this, 'bmi');
     });
 
+    
 
-    document.getElementById('cancel-btn').addEventListener('click', function () {
-        // Get the form element
-        var form = document.getElementById('vitalSignsForm');
+    const tooltip = document.getElementById('tooltip');
+    const normalRangesLabel = document.getElementById('normalRanges');
 
-        // Loop through all input elements inside the form
-        var inputs = form.querySelectorAll('input');
+    // Function to toggle tooltip visibility
+    function toggleTooltip() {
+        const isVisible = tooltip.style.display === 'block';
+        tooltip.style.display = isVisible ? 'none' : 'block';
+    }
 
-        inputs.forEach(function (input) {
-            // Clear fields except for date and time inputs
-            if (input.type !== 'date' && input.type !== 'time' && input.type !== 'hidden') {
-                input.value = ''; // Clear the input value
-            }
-        });
+    // Event listener for tooltip toggle on label click
+    normalRangesLabel.addEventListener('click', toggleTooltip);
 
-        // Clear the textarea field if applicable (remarks)
-        var textareas = form.querySelectorAll('textarea');
-        textareas.forEach(function (textarea) {
-            textarea.value = ''; // Clear textarea content
-        });
+    // Optional: Hide tooltip when clicking outside
+    window.addEventListener('click', function(event) {
+        if (!normalRangesLabel.contains(event.target) && !tooltip.contains(event.target)) {
+            tooltip.style.display = 'none'; // Hide tooltip if clicked outside
+        }
     });
 
-
-
-
+    // Optional: Show tooltip on hover
+    normalRangesLabel.addEventListener('mouseover', function() {
+        tooltip.style.display = 'block';
+    });
+    normalRangesLabel.addEventListener('mouseout', function() {
+        tooltip.style.display = 'none';
+    });
 
 
 
@@ -489,34 +344,3 @@ window.onload = function() {
 
 
 
-function vitalSignToggleDivs() {
-    const vitalDiv = document.getElementById("vitalDiv");
-    const vitalMainDiv = document.getElementById("vitalMainDiv");
-
-    // Check if the sidebar is collapsed
-    if (vitalDiv.classList.contains("collapsed")) {
-        // Show the sidebar
-        vitalDiv.classList.remove("collapsed");
-
-        // Use requestAnimationFrame for smoother transitions
-        requestAnimationFrame(() => {
-            vitalDiv.style.display = "block"; // Make it visible
-        });
-
-        // Adjust mainDiv width
-        vitalMainDiv.classList.remove("col-xl-12");
-        vitalMainDiv.classList.add("col-xl-8");
-    } else {
-        // Hide the sidebar
-        vitalDiv.classList.add("collapsed");
-
-        // Delay before setting display to none
-        setTimeout(() => {
-            vitalDiv.style.display = "none"; // Hide it
-        }, 100); // Match this with your CSS transition timing
-
-        // Expand mainDiv to col-xl-12
-        vitalMainDiv.classList.remove("col-xl-8");
-        vitalMainDiv.classList.add("col-xl-12");
-    }
-}

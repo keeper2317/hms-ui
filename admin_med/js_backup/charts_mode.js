@@ -1,3 +1,7 @@
+
+
+
+
 function makeFormReadonly() {
     const inputs = document.querySelectorAll('.step-form-horizontal input, .step-form-horizontal textarea');
     inputs.forEach(input => {
@@ -134,8 +138,8 @@ function populateForm(vitals) {
     methodInput.value = 'PATCH'; // Ensure the form method is PATCH for update
 
     // Populate the form fields with the vital signs data
-    document.getElementById('diagnosis-date-input').value = vitals.diagnosis_date;
-    document.getElementById('diagnosis-time-input').value = convertTo24Hour(vitals.diagnosis_time);
+    document.getElementById('datetime-input').value = vitals.diagnosis_date;
+    document.getElementById('datetime-input-time').value = convertTo24Hour(vitals.diagnosis_time);
     document.getElementById('bpInput').value = vitals.B_P;
     document.getElementById('hrInput').value = vitals.heart_rate;
     document.getElementById('prInput').value = vitals.pulse_rate;
@@ -170,8 +174,8 @@ function convertTo24Hour(time) {
 
 function populateFormView(vitals) {
     // Populate the form fields with the vital signs data
-    document.getElementById('diagnosis-date-input').value = vitals.diagnosis_date;
-    document.getElementById('diagnosis-time-input').value = convertTo24Hour(vitals.diagnosis_time);
+    document.getElementById('datetime-input').value = vitals.diagnosis_date;
+    document.getElementById('datetime-input-time').value = convertTo24Hour(vitals.diagnosis_time);
     document.getElementById('bpInput').value = vitals.B_P;
     document.getElementById('hrInput').value = vitals.heart_rate;
     document.getElementById('prInput').value = vitals.pulse_rate;
